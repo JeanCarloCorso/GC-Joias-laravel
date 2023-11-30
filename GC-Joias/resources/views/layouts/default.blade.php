@@ -95,21 +95,18 @@
                     &copy; 2023 - GC Jóias<br>
                 </div>
                 <div class="col-12 col-md-4 text-center">
-                    <a href="/privacidade.html" class="text-decoration-none text-dark">
+                    <a href="/privacidade" class="text-decoration-none text-dark">
                         Política de Privacidade
                     </a><br>
-                    <a href="/termos.html" class="text-decoration-none text-dark">
+                    <a href="/termos" class="text-decoration-none text-dark">
                         Termos de Uso
                     </a><br>
-                    <a href="/quemsomos.html" class="text-decoration-none text-dark">
+                    <a href="/quemsomos" class="text-decoration-none text-dark">
                         Quem Somos
-                    </a><br>
-                    <a href="/trocas.html" class="text-decoration-none text-dark">
-                        Trocas e Devoluções
                     </a>
                 </div>
                 <div class="col-12 col-md-4 text-center">
-                    <a href="/contato.html" class="text-decoration-none text-dark">
+                    <a href="/contato" class="text-decoration-none text-dark">
                         Contato pelo Site
                     </a><br>
                     E-mail: <a href="mailto:email@dominio.com" class="text-decoration-none text-dark">

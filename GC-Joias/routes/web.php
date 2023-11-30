@@ -31,3 +31,19 @@ Route::prefix('filtro')->group(function() {
 Route::any('ordenado', [ProdutosController::class, 'OrdenarProduto'])->name('ordena.produto');
 
 Route::get('/filtro/nome', [ProdutosController::class, 'Show']);
+
+Route::get('/privacidade', function () {
+    return view('privacidade');
+});
+
+Route::get('/termos', function () {
+    return view('termos');
+});
+
+Route::get('/quemsomos', function () {
+    return view('quemsomos');
+});
+
+Route::get('/contato', function () {
+    return view('contato');
+});
