@@ -10,10 +10,13 @@ class ProdutosController extends Controller
 {
     public function Show()
     {
+        $produtosComImagemPrincipal = Produtos::whereHas('imagens')->get();
+
         $produtos = Produtos::all();
+        $imagens = ImagemProdutos::all();
         if($produtos)
         {
-            return view('home', ['produtos' => $produtos]);
+            return view('home', ['produtoscomImagens' => $produtosComImagemPrincipal]);
         } else {
             return 'Vazio';
         }

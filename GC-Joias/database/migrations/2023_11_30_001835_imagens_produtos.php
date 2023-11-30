@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('imagens_produtos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('produto_id')->constrained();
-            $table->string('nome')->unique();
-            $table->boolean('principal');
+            $table->foreignId('produto_id')->constrained()->onDelete('cascade');
+            $table->string('nome');
+            $table->boolean('principal')->default(false);
             $table->timestamps();
         });
     }

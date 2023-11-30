@@ -17,4 +17,14 @@ class Produtos extends Model
         'custo',
         'preco'
     ];
+
+    public function imagens()
+    {
+        return $this->hasMany(ImagemProdutos::class, 'produto_id', 'id');
+    }
+
+    public function imagemPrincipal()
+    {
+        return $this->hasOne(ImagemProdutos::class, 'produto_id', 'id')->where('principal', true);
+    }
 }
