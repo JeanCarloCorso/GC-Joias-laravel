@@ -24,3 +24,10 @@ Route::prefix('user')->group(function() {
 
 
 Route::get('/', [ProdutosController::class, 'Show']);
+
+Route::prefix('filtro')->group(function() {
+    Route::any('nome', [ProdutosController::class, 'FiltraPorNome'])->name('filtra.produto.nome');
+});
+Route::any('ordenado', [ProdutosController::class, 'OrdenarProduto'])->name('ordena.produto');
+
+Route::get('/filtro/nome', [ProdutosController::class, 'Show']);

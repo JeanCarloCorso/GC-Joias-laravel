@@ -50,10 +50,11 @@
     <div class="row">
                 <!--Busca-->
                 <div class="col-12 col-md-5">
-                    <form class="justify-content-center justify-content-md-start mb-3 mb-md-0">
+                    <form class="justify-content-center justify-content-md-start mb-3 mb-md-0" method="post" action="{{ route('filtra.produto.nome') }}">
+                        @csrf
                         <div class="input-group input-group-sm">
-                            <input type="text" class="form-control" placeholder="Digite aqui o que procura">
-                            <button class="btn btn-danger">Buscar</button>
+                            <input name="nome" type="text" class="form-control" placeholder="Digite aqui o que procura">
+                            <button class="btn btn-danger" type="submit">Buscar</button>
                         </div>
                     </form>
                 </div>
@@ -61,17 +62,21 @@
                 <!--filtros-->
                 <div class="col-12 col-md-7">
                     <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
-                        <form class="d-inline-block">
-                            <select class="form-select form-select-sm">
-                                <option>Ordenar pelo nome</option>
-                                <option>Ordenar pelo menor preço</option>
-                                <option>Ordenar pelo maior preço</option>
-                            </select>
-                        </form>
+                    <form class="d-inline-block" id="formOrdenacao" method="post" action="{{ route('ordena.produto') }}">
+                        @csrf <!-- Adicione o token CSRF -->
+                        <select class="form-select form-select-sm" name="ordenacao" onchange="submitForm()"> <!-- Adicione onchange para chamar a função JS -->
+                            <option disabled selected hidden>Ordenar</option>
+                            <option value="0">Ordenar pelo nome</option>
+                            <option value="1">Ordenar pelo menor preço</option>
+                            <option value="2">Ordenar pelo maior preço</option>
+                            <option value="3">Ordenar pelo mais recente</option>
+                            <option value="4">Ordenar pelo mais antigo</option>
+                        </select>
+                    </form>
                     </div>
                 </div>
             </div>
-            <hr class="mt-3">
+            <hr class="mt-1">
 
     <!--Listagem de Produtos-->
     <div class="row g-3">
@@ -102,3 +107,9 @@
         @endforeach
     </div>
 @endsection
+
+<script>
+    function submitForm() {
+        document.getElementById("formOrdenacao").submit();
+    }
+</script>
