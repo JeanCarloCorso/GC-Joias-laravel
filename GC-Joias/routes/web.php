@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProdutosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,4 @@ Route::prefix('user')->group(function() {
 });
 
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [ProdutosController::class, 'Show']);
