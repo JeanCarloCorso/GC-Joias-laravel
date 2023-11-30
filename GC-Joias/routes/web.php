@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('user')->group(function() {
     Route::get('', function(){
-        return 'usuario';
+        return view('login');
     });
-    Route::get('/{id}', [UserController::class, 'Find']);
-    Route::get('', [UserController::class, 'Show']);
+    //Route::get('/{id}', [UserController::class, 'Find']);
+    //Route::get('', [UserController::class, 'Show']);
 });
 
 

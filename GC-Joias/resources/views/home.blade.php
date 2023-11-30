@@ -106,6 +106,42 @@
             </div>
         @endforeach
     </div>
+    <!--paginacao quando for implementada -->
+    <hr class="mt-3">
+    <div class="row pb-3">
+        <div class="col-12">
+            <div class="d-flex flex-row-reverse justify-content-center">
+                <nav class="d-inline-block me-3">
+                    <ul class="pagination pagination-sm my-0">
+                        <li class="page-item">
+                            <a class="page-link" href="#">Anterior</a>
+                        </li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">5</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">6</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Próxima</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
 @endsection
 
 <script>
