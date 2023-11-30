@@ -11,7 +11,8 @@ class ProdutosController extends Controller
 {
     public function Show()
     {
-        $produtosComImagemPrincipal = Produtos::whereHas('imagens')->orderBy('nome', 'asc')->get();
+        $produtosComImagemPrincipal = Produtos::whereHas('imagens')->where('quantidade', '>', 0)
+            ->orderBy('nome', 'asc')->get();
         $banners = Banners::all();
 
         if($produtosComImagemPrincipal)
@@ -27,7 +28,7 @@ class ProdutosController extends Controller
     public function FiltraPorNome(Request $nome)
     {
         $produtosComImagem = Produtos::where('nome', 'like', '%' . $nome->nome . '%')
-        ->whereHas('imagens')
+        ->whereHas('imagens')->where('quantidade', '>', 0)
         ->get();
 
         $banners = Banners::all();
@@ -46,7 +47,7 @@ class ProdutosController extends Controller
     {
         $ordenacao = $request->input('ordenacao');
 
-        $produtosOrdenados = Produtos::whereHas('imagens');
+        $produtosOrdenados = Produtos::whereHas('imagens')->where('quantidade', '>', 0);
 
         switch ($ordenacao) {
             case '1':

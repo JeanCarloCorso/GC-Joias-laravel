@@ -27,26 +27,16 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/index.html">Principal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/contato.html">Contato</a>
+                        <a class="nav-link text-white" href="/">Principal</a>
                     </li>
                 </ul>
                 <div class="align-self-end">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="/cadastro.html" class="nav-link text-white">Quero Me Cadastrar</a>
+                            <a href="/" class="nav-link text-white">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/login.html" class="nav-link text-white">Entrar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link text-white">
-                                <svg class="bi" width="24" height="24" fill="currentColor">
-                                    <use xlink:href={{ asset('site/bootstrap-icons.svg#cart3') }} />
-                                </svg>
-                            </a>
+                            <a href="/cadastro.html" class="nav-link text-white">Receber Novidades</a>
                         </li>
                     </ul>
                 </div>
@@ -56,7 +46,7 @@
 
     <main class="flex-fill">
         <div class="container">
-            
+
             @yield('content')
 
         <hr class="mt-3">
