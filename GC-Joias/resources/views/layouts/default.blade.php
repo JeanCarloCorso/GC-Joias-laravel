@@ -17,6 +17,7 @@
 </head>
 
 <body style="min-width: 372px;">
+    <!--navebar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger border-bottom shadow-sm mb-3">
         <div class="container">
             <a class="navbar-brand" href="/"><b>GC Jóias</b></a>
@@ -53,85 +54,8 @@
         </div>
     </nav>
 
-    <header class="container">
-        <div id="carouselMain" class="carousel slide carousel-dark" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="2"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="3000">
-                    <img src={{ asset('site//img/slides/slide01.jpg') }} class="d-none d-md-block w-100" alt="">
-                    <img src={{ asset('site//img/slides/slide01small.jpg') }} class="d-block d-md-none  w-100" alt="">
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src={{ asset('site//img/slides/slide01.jpg') }} class="d-none d-md-block w-100" alt="">
-                    <img src={{ asset('site//img/slides/slide01small.jpg') }} class="d-block d-md-none  w-100" alt="">
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src={{ asset('site//img/slides/slide01.jpg') }} class="d-none d-md-block w-100" alt="">
-                    <img src={{ asset('site//img/slides/slide01small.jpg') }} class="d-block d-md-none  w-100" alt="">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselMain" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-                <span class="visually-hidden">Próximo</span>
-            </button>
-            <hr class="mt-3">
-        </div>
-    </header>
-
     <main class="flex-fill">
         <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-5">
-                    <form class="justify-content-center justify-content-md-start mb-3 mb-md-0">
-                        <div class="input-group input-group-sm">
-                            <input type="text" class="form-control" placeholder="Digite aqui o que procura">
-                            <button class="btn btn-danger">Buscar</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-12 col-md-7">
-                    <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
-                        <form class="d-inline-block">
-                            <select class="form-select form-select-sm">
-                                <option>Ordenar pelo nome</option>
-                                <option>Ordenar pelo menor preço</option>
-                                <option>Ordenar pelo maior preço</option>
-                            </select>
-                        </form>
-                        <nav class="d-inline-block me-3">
-                            <ul class="pagination pagination-sm my-0">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">4</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">5</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">6</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <hr class="mt-3">
             
             @yield('content')
 
