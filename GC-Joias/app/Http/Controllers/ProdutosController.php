@@ -15,14 +15,8 @@ class ProdutosController extends Controller
             ->orderBy('nome', 'asc')->get();
         $banners = Banners::all();
 
-        if($produtosComImagemPrincipal)
-        {
-            return view('home', 
-                ['produtoscomImagens' => $produtosComImagemPrincipal, 'banners' => $banners]);
-        } else {
-            return 'Vazio';
-        }
-        
+        return view('home', 
+            ['produtoscomImagens' => $produtosComImagemPrincipal, 'banners' => $banners]);
     }
 
     public function FiltraPorNome(Request $nome)
@@ -33,14 +27,9 @@ class ProdutosController extends Controller
 
         $banners = Banners::all();
         
-        if($produtosComImagem)
-        {
-            return view('home', 
-                ['produtoscomImagens' => $produtosComImagem, 'banners' => $banners]);
-        } else {
-            return 'Vazio';
-        }
-        
+        return view('home', 
+            ['produtoscomImagens' => $produtosComImagem, 'banners' => $banners]);
+
     }
 
     public function OrdenarProduto(Request $request)

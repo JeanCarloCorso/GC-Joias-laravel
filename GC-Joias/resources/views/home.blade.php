@@ -79,33 +79,37 @@
             <hr class="mt-1">
 
     <!--Listagem de Produtos-->
-    <div class="row g-3">
-        @foreach($produtoscomImagens as $produto)
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 d-flex align-items-stretch">
-                <div class="card text-center bg-light">
-                    <a href="#" class="position-absolute end-0 p-2 text-danger">
-                        <i class="bi-suit-heart" style="font-size: 24px; line-height: 24px;"></i>
-                    </a>
-                    <img src="{{ asset('site/img/produtos/' . $produto->imagens[0]->nome) }}" class="card-img-top">
-                    <div class="card-header">
-                        R$ {{ $produto->preco }}
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">{{ $produto->nome }}</h6>
-                        <p class="card-text truncar-3l">
-                            {{ $produto->descricao }}
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="carrinho.html" class="btn btn-danger mt-2 d-block">
-                            Adicionar ao Carrinho
+    @if(count($produtoscomImagens) > 0)
+        <div class="row g-3">
+            @foreach($produtoscomImagens as $produto)
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
+                    <div class="card text-center bg-light">
+                        <a href="#" class="position-absolute end-0 p-2 text-danger">
+                            <i class="bi-suit-heart" style="font-size: 24px; line-height: 24px;"></i>
                         </a>
-                        <small class="text-success">{{ $produto->quantidade }} em estoque</small>
+                        <img src="{{ asset('site/img/produtos/' . $produto->imagens[0]->nome) }}" class="card-img-top">
+                        <div class="card-header">
+                            R$ {{ $produto->preco }}
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title truncar-2l">{{ $produto->nome }}</h6>
+                            <p class="card-text truncar-3l">
+                                {{ $produto->descricao }}
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="carrinho.html" class="btn btn-danger mt-2 d-block">
+                                Adicionar ao Carrinho
+                            </a>
+                            <small class="text-success">{{ $produto->quantidade }} em estoque</small>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-    </div>
+            @endforeach
+        </div>
+    @else
+        <h3>Nenhum produto encontrado :(</h3>
+    @endif
     <!--paginacao quando for implementada -->
     <hr class="mt-3">
     <div class="row pb-3">
