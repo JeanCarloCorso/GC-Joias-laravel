@@ -26,6 +26,8 @@ Route::controller(LoginController::class)->group(function()
 Route::get('/login/produtos', [AreaRestritaController::class, 'ProdutosAr'])->name('ar.produtos');
 Route::post('/login/newuser', [AreaRestritaController::class, 'CriaUser'])->name('ar.criar.user');
 Route::get('/login/cadastro/user', [AreaRestritaController::class, 'CadastroUser'])->name('ar.cadastro.user');
+Route::get('/login/mudasenha', [AreaRestritaController::class, 'TrocarSenha'])->name('ar.trocaSenha');
+Route::post('/login/mudasenha', [AreaRestritaController::class, 'SalvarNovaSenha'])->name('ar.salvaSenha');
 
 
 Route::get('/', [ProdutosController::class, 'Show'])->name('home.show');

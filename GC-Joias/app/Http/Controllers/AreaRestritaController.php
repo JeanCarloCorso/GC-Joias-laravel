@@ -55,10 +55,9 @@ class AreaRestritaController extends Controller
                 'name' => $request->nome,
                 'email' => $request->email,
                 'password' => $request->senha,
-                'passwordConfirm' => $request->senhaConfirm,
             ];
 
-            $new['password'] = Hash::make($request->senha);
+            $new['password'] = Hash::make($request->password);
 
             $user = User::create($new);
 
@@ -76,6 +75,43 @@ class AreaRestritaController extends Controller
         if(Auth()->check())
         {
             return view('areaRestrita/ar_cadastroUser');
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function TrocarSenha()
+    {
+        if(Auth()->check())
+        {
+            return view('areaRestrita/ar_trocaSenha');
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+    public function SalvarNovaSenha(Request $request)
+    {
+        if(Auth()->check())
+        {
+            $user = auth()->user();
+            $request->validate([
+                'password' => 'required|min:8',
+                'passwordConfirm' => 'same:password'
+            ], [
+                'password.required' => 'O campo senha é obrigatório!',
+                'password.min' => 'A senha deve conter no mínimo :min caracteres!',
+                'passwordConfirm.same' => 'A senha e a confirmação devem ser iguais'
+            ]);
+
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            
+            return redirect()->route('ar.produtos')->with(['senhaAlterada' => 'Senha alterada com suscesso!']);
         }
         else
         {
