@@ -38,6 +38,19 @@ h6.truncar-2l {
     right: 20px; /* Ajuste a posição horizontal conforme desejado */
 }
 
+.success-notification {
+    display: flex;
+    align-items: center; /* Alinhamento vertical central */
+    justify-content: center; /* Alinhamento horizontal central */
+    height: 60px; /* Altura da notificação */
+    font-size: 18px; /* Tamanho da fonte */
+    margin-bottom: 10px;
+    background-color: #D1E7DD; /* Cor de fundo para representar um erro */
+    color: #0A3622;
+    border-radius: 5px;
+    animation: fadeOut 10s forwards; /* Define a animação de desaparecimento após 10 segundos */
+}
+
 .error-notification {
     display: flex;
     align-items: center; /* Alinhamento vertical central */

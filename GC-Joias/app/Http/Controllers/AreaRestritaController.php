@@ -18,7 +18,7 @@ class AreaRestritaController extends Controller
                 ->orderBy('nome', 'asc')->get();
             $user = 'Jean Carlo Corso';
 
-            return view('ar_produtos', ['user' => $user, 'produtos' => $produtos]);
+            return view('areaRestrita/ar_produtos', ['user' => $user, 'produtos' => $produtos]);
         }
         else
         {
@@ -26,18 +26,60 @@ class AreaRestritaController extends Controller
         }
     }
 
-    public function CriaUser()
+    public function CriaUser(Request $request)
     {
-        $new = [
-            'name' => 'Jean Carlo Corso',
-            'email' => 'email@dominio.com',
-            'password' => '1234567890',
-        ];
+        
+        if(Auth()->check())
+        {
+            $request->validate([
+                'nome' => 'required|min:3',
+                'email' => 'required|email',
+                'password' => 'required|min:8',
+                'passwordConfirm' => 'same:password'
+            ], [
+                'nome.required' => 'O campo nome é obrigatório!',
+                'nome.min' => 'O nome deve conter no mínimo :min caracteres!',
+                'email.required' => 'O campo e-mail é obrigatório!',
+                'email.email' => 'Informe um email válido!',
+                'password.required' => 'O campo senha é obrigatório!',
+                'password.min' => 'A senha deve conter no mínimo :min caracteres!',
+                'passwordConfirm.same' => 'A senha e a confirmação devem ser iguais'
+            ]);
 
-        $new['password'] = Hash::make('1234567890');
+            $userExists = User::where('email', $request->email)->exists();
+            if($userExists)
+            {
+                return redirect()->route('ar.cadastro.user')->withErrors(['usuarioExistente' => 'O Usuário com o e-mail ' . $request->email . ' já existe!']);
+            }
+            $new = [
+                'name' => $request->nome,
+                'email' => $request->email,
+                'password' => $request->senha,
+                'passwordConfirm' => $request->senhaConfirm,
+            ];
 
-        $user = User::create($new);
-        dd($user);
-        // Redirecione ou retorne uma resposta adequada após a criação do usuário
+            $new['password'] = Hash::make($request->senha);
+
+            $user = User::create($new);
+
+            return redirect()->route('ar.produtos')->with(['usuarioCadastrado' => 'Usuário cadastrado com suscesso!']);
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+
+    public function CadastroUser()
+    {
+        if(Auth()->check())
+        {
+            return view('areaRestrita/ar_cadastroUser');
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
     }
 }

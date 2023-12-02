@@ -60,4 +60,10 @@
         @endif
     </div>
 
+    <div class="notification-container top-right">
+        @if (session('usuarioCadastrado'))
+            <div class="success-notification larger">{{ session('usuarioCadastrado') }}</div>
+        @endif
+    </div>
+
 @endsection
