@@ -67,6 +67,9 @@
         @if (session('senhaAlterada'))
             <div class="success-notification larger">{{ session('senhaAlterada') }}</div>
         @endif
+        @if (session('produtoCadastrado'))
+            <div class="success-notification larger">{{ session('produtoCadastrado') }}</div>
+        @endif
     </div>
 
 @endsection

@@ -69,3 +69,40 @@ h6.truncar-2l {
     0% { opacity: 1; }
     100% { opacity: 0; display: none; }
 }
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.image-button {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: 110px; /* Defina o tamanho desejado para a imagem simulada */
+    height: 110px; /* Defina o tamanho desejado para a imagem simulada */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.preview-image {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+.image-button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+
+#selectText1, #selectText2, #selectText3, #selectText4 {
+    display: block;
+}
+
+

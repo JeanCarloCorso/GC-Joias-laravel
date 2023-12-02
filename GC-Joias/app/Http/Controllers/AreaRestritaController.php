@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorias;
+use App\Models\Generos;
+use App\Models\ImagemProdutos;
 use App\Models\Produtos;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -106,6 +109,7 @@ class AreaRestritaController extends Controller
             return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
         }
     }
+
     public function SalvarNovaSenha(Request $request)
     {
         if(Auth()->check())
@@ -125,6 +129,75 @@ class AreaRestritaController extends Controller
 
             
             return redirect()->route('ar.produtos')->with(['senhaAlterada' => 'Senha alterada com suscesso!']);
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function CadastroDeProduto()
+    {
+        if(Auth()->check())
+        {
+            $generos = Generos::all();
+            $categorias = Categorias::all();
+            return view('areaRestrita/ar_cadastroProduto', ['generos' => $generos, 'categorias' => $categorias]);
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function SalvarNovoProduto(Request $request)
+    {
+        if(Auth()->check())
+        {
+            $request->validate([
+                'nome' => 'required|min:3',
+                'quantidade' => 'required',
+                'preco' => 'required',
+                'descricao' => 'required',
+                'genero' => 'required',
+                'categoria' => 'required',
+                'imagen01' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'imagen02' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'imagen03' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'imagen04' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            ], [
+                'nome.required' => 'O campo nome é obrigatório!',
+                'nome.min' => 'O nome deve conter no mínimo :min caracteres!',
+                'quantidade.required' => 'O campo quantidade é obrigatório!',
+                'preco.required' => 'O campo preco é obrigatório!',
+                'descricao.required' => 'O campo descrição é obrigatório!',
+                'genero.required' => 'Escolha um genero para o produto!',
+                'categoria.required' => 'Escolha uma categoria para o produto!',
+                'imagen01.required' => 'A primeira imagem é obrigatória!',
+            ]);
+
+            $novoProduto = Produtos::create([
+                'nome' => $request->nome,
+                'quantidade' => $request->quantidade,
+                'custo' => $request->custo,
+                'preco' => $request->preco,
+                'categoria_id' => $request->categoria,
+                'genero_id' => $request->genero,
+                'descricao' => $request->descricao,
+            ]);
+
+            if ($request->hasFile('imagen01')) {
+                $imagem = $request->file('imagen01');
+                $nomeImagem = time() . '_' . $imagem->getClientOriginalName();
+                $caminhoImagem = $imagem->storeAs('public/site/img/produtos', $nomeImagem);
+                ImagemProdutos::create([
+                    'produto_id' => $novoProduto->id,
+                    'nome' => $nomeImagem,
+                    'principal' => true
+                ]);
+            }
+
+            return redirect()->route('ar.produtos')->with(['produtoCadastrado' => 'Produto cadastrado com suscesso!']);
         }
         else
         {
