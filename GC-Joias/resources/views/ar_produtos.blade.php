@@ -1,6 +1,6 @@
 @extends('layouts.arearestrita')
 
-@section('nomeUser', $user )
+@section('nomeUser', auth()->user()->name )
 
 @section('content')
     
