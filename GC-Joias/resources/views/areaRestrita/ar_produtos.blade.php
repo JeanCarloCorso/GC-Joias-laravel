@@ -6,7 +6,7 @@
     
     <link rel="stylesheet" href={{ asset('css/estilos.css') }}>
     
-    <form class="justify-content-center justify-content-md-start mb-3 mb-md-0" method="post" action="{{ route('filtra.produto.nome') }}">
+    <form class="justify-content-center justify-content-md-start mb-3 mb-md-0" method="post" action="{{ route('ar.produtos.filtra.nome') }}">
         @csrf
         <div class="input-group input-group-sm">
             <input name="nome" type="text" class="form-control" placeholder="Digite aqui o que procura">

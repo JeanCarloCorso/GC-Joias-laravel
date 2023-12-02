@@ -10,15 +10,28 @@ use Illuminate\Support\Facades\Hash;
 
 class AreaRestritaController extends Controller
 {
-    public function ProdutosAr(Request $request)
+    public function ProdutosAr()
     {
         if(Auth()->check())
         {
-            $produtos = Produtos::whereHas('imagens')->where('quantidade', '>', 0)
-                ->orderBy('nome', 'asc')->get();
-            $user = 'Jean Carlo Corso';
+            $produtos = Produtos::whereHas('imagens')->orderBy('nome', 'asc')->get();
 
-            return view('areaRestrita/ar_produtos', ['user' => $user, 'produtos' => $produtos]);
+            return view('areaRestrita/ar_produtos', ['produtos' => $produtos]);
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function ProdutosArPorNome(Request $request)
+    {
+        if(Auth()->check())
+        {
+            $produtos = Produtos::where('nome', 'like', '%' . $request->nome . '%')
+            ->whereHas('imagens')->get();
+
+            return view('areaRestrita/ar_produtos', ['produtos' => $produtos]);
         }
         else
         {
