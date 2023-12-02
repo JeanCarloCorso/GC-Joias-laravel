@@ -65,15 +65,4 @@ class ProdutosController extends Controller
         $banners = Banners::all();
         return view('home', ['produtoscomImagens' => $produtosComImagemPrincipal, 'banners' => $banners]);
     }
-
-    public function ProdutosAr(Request $request)
-    {
-        $produtos = Produtos::whereHas('imagens')->where('quantidade', '>', 0)
-            ->orderBy('nome', 'asc')->get();
-        $user = 'Jean Carlo Corso';
-
-
-
-        return view('ar_produtos', ['user' => $user, 'produtos' => $produtos]);
-    }
 }

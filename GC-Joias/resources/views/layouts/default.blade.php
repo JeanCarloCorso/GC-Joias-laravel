@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href={{ asset('site/bootstrap.min.css') }}> 
     
-
+    <link rel="stylesheet" href={{ asset('css/estilos.css') }}>
     <title>GC Jóias @yield('title', '')</title>
 
     <link rel="icon" type="image/x-icon" href={{ asset('site/img/favicon/favicon.ico') }}>

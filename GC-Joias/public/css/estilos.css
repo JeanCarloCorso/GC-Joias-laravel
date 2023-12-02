@@ -25,3 +25,34 @@ h6.truncar-2l {
 .custon-tamanho-btn {
     width: 120px;
 }
+
+.notification-container {
+    position: fixed;
+    width: 300px; /* Largura da área de notificação */
+    padding: 10px;
+    z-index: 9999;
+}
+
+.top-right {
+    top: 60px; /* Ajuste a posição vertical conforme desejado */
+    right: 20px; /* Ajuste a posição horizontal conforme desejado */
+}
+
+.error-notification {
+    display: flex;
+    align-items: center; /* Alinhamento vertical central */
+    justify-content: center; /* Alinhamento horizontal central */
+    height: 60px; /* Altura da notificação */
+    font-size: 18px; /* Tamanho da fonte */
+    margin-bottom: 10px;
+    background-color: #ff6347; /* Cor de fundo para representar um erro */
+    color: white;
+    border-radius: 5px;
+    animation: fadeOut 10s forwards; /* Define a animação de desaparecimento após 10 segundos */
+}
+
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}

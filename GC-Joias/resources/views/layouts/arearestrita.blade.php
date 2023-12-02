@@ -61,7 +61,7 @@
                             <svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="{{ asset('site\bootstrap-icons.svg#lock') }}"/></svg> Alterar Senha
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a href="{{ route('login.destroy') }}" class="list-group-item list-group-item-action">
                             <svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="{{ asset('site\bootstrap-icons.svg#door-open') }}"/></svg> Sair
                         </a>
