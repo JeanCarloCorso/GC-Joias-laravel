@@ -12,7 +12,7 @@
 
     <title>GC Jóias @yield('title', '')</title>
 
-    <link rel="icon" type="image/x-icon" href={{ asset('site//img/favicon/favicon.ico') }}>
+    <link rel="icon" type="image/x-icon" href={{ asset('site/img/favicon/favicon.ico') }}>
     
 </head>
 

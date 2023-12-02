@@ -3,7 +3,8 @@
 @section('title', ':: Privacidade')
 
 @section('content')
-    <form class="col-sm-10 col-md-8 col-lg-6">
+    <form class="col-sm-10 col-md-8 col-lg-6" method="post" action="{{ route('ar.produtos') }}">
+        @csrf
         <h1>Identifique-se, por favor</h1>
 
         <div class="form-floating mb-3">
@@ -21,8 +22,7 @@
             <label for="chkLembrar" class="form-check-label">Lembrar de mim</label>
         </div>
 
-        <button type="button" onclick="window.location.href='/cliente_pedidos.html'"
-            class="btn btn-lg btn-danger">Entrar</button>
+        <button type="submit" class="btn btn-lg btn-danger">Entrar</button>
 
         <p class="mt-3">
             Se tiver problemas ao efetuar login, entre em contato com o administrador do sistema!

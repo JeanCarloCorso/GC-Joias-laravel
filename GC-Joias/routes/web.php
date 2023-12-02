@@ -18,7 +18,7 @@ Route::prefix('user')->group(function() {
     Route::get('', function(){
         return view('login');
     });
-    //Route::get('/{id}', [UserController::class, 'Find']);
+    Route::any('/produtos', [ProdutosController::class, 'ProdutosAr'])->name('ar.produtos');
     //Route::get('', [UserController::class, 'Show']);
 });
 
