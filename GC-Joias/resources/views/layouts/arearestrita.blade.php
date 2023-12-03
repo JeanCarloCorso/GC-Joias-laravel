@@ -45,6 +45,10 @@
                             <svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="{{ asset('site\bootstrap-icons.svg#plus-circle') }}"/></svg> Cadastrar Produto
                         </a>
+                        <a href="{{ route('ar.categorias') }}" class="list-group-item list-group-item-action">
+                            <svg class="bi me-2" width="20" height="20">
+                                <use xlink:href="{{ asset('site\bootstrap-icons.svg#grid') }}"/></svg> Categorias
+                        </a>
                         <a href="{{ route('ar.banners') }}" class="list-group-item list-group-item-action">
                             <svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="{{ asset('site\bootstrap-icons.svg#play') }}"/></svg> Banner
@@ -56,10 +60,6 @@
                         <a href="{{ route('ar.cadastro.user') }}" class="list-group-item list-group-item-action">
                             <svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="{{ asset('site\bootstrap-icons.svg#file-earmark-person') }}"/></svg> Novo Usuário
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <svg class="bi me-2" width="20" height="20">
-                                <use xlink:href="{{ asset('site\bootstrap-icons.svg#person') }}"/></svg> Dados Pessoais
                         </a>
                         <a href="{{ route('ar.trocaSenha') }}" class="list-group-item list-group-item-action">
                             <svg class="bi me-2" width="20" height="20">

@@ -395,4 +395,69 @@ class AreaRestritaController extends Controller
             return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
         }
     }
+
+    public function Categorias()
+    {
+        if(Auth()->check())
+        {
+            $categorias = Categorias::all();
+
+            return view('areaRestrita/ar_cadastroCategoria', ['categorias' => $categorias]);
+
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function SalvarCategoria(Request $request)
+    {
+        if(Auth()->check())
+        {
+            $request->validate([
+                'categoria' => 'required'
+            ], [
+                'categoria.required' => 'O campo Nova Categoria é obrigatório!'
+            ]);
+
+        
+            Categorias::Create([
+                'descricao' => $request->categoria
+            ]);
+
+            $categorias = Categorias::all();
+            return view('areaRestrita/ar_cadastroCategoria', ['categorias' => $categorias]);
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function DeletarCategoria($id)
+    {
+        dd("não programado");
+        if(Auth()->check())
+        {
+            $Banner = Banners::findOrFail($id);
+
+            if (Storage::disk('public')->exists($Banner->menor_resolucao)) {
+                Storage::disk('public')->delete($Banner->menor_resolucao);
+            }
+            if (Storage::disk('public')->exists($Banner->maior_resolucao)) {
+                Storage::disk('public')->delete($Banner->maior_resolucao);
+            }
+            
+
+            $Banner->delete();
+
+            $banners = Banners::all();
+            return view('areaRestrita/ar_cadastrobanners', ['banners' => $banners])->with(['bannerRemove' => 'Banner excluido com suscesso!']);;
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
 }

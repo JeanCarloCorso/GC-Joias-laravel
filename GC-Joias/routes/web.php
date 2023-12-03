@@ -38,6 +38,10 @@ Route::get('/login/banners', [AreaRestritaController::class, 'Banners'])->name('
 Route::post('/login/create/banner', [AreaRestritaController::class, 'SalvarBanner'])->name('ar.salvaNovoBanner');
 Route::delete('/login/delete/banner/{id}', [AreaRestritaController::class, 'DeletarBanner'])->name('ar.apagaBanner');
 
+Route::get('/login/categorias', [AreaRestritaController::class, 'Categorias'])->name('ar.categorias');
+Route::post('/login/create/categoria', [AreaRestritaController::class, 'SalvarCategoria'])->name('ar.salvaNovaCategoria');
+Route::delete('/login/delete/Categoria/{id}', [AreaRestritaController::class, 'DeletarCategoria'])->name('ar.apagaCategoria');
+
 
 Route::get('/', [ProdutosController::class, 'Show'])->name('home.show');
 
