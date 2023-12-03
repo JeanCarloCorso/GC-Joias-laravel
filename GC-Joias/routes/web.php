@@ -34,6 +34,9 @@ Route::post('/login/cadastroproduto', [AreaRestritaController::class, 'SalvarNov
 Route::delete('/login/delete/{id}', [AreaRestritaController::class, 'ExcluirProduto'])->name('ar.excluirProduto');
 Route::get('/login/edit/{id}', [AreaRestritaController::class, 'EditarProduto'])->name('ar.editarProduto');
 Route::post('/login/saveedit', [AreaRestritaController::class, 'SalvarEdicaoProduto'])->name('ar.salvarEdicaoProduto');
+Route::get('/login/banners', [AreaRestritaController::class, 'Banners'])->name('ar.banners');
+Route::post('/login/create/banner', [AreaRestritaController::class, 'SalvarBanner'])->name('ar.salvaNovoBanner');
+Route::delete('/login/delete/banner/{id}', [AreaRestritaController::class, 'DeletarBanner'])->name('ar.apagaBanner');
 
 
 Route::get('/', [ProdutosController::class, 'Show'])->name('home.show');

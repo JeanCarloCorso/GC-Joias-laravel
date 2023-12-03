@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banners;
 use App\Models\Categorias;
 use App\Models\Generos;
 use App\Models\ImagemProdutos;
@@ -317,6 +318,77 @@ class AreaRestritaController extends Controller
             $produto->save();
 
             return redirect()->route('ar.produtos')->with(['produtoEditado' => 'Produto editado com suscesso!']);
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function Banners()
+    {
+        if(Auth()->check())
+        {
+            $banners = Banners::all();
+
+            return view('areaRestrita/ar_cadastrobanners', ['banners' => $banners]);
+
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function SalvarBanner(Request $request)
+    {
+        if(Auth()->check())
+        {
+            $request->validate([
+                'imagen01' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'imagen02' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ], [
+                'imagen01.required' => 'O banner de 1400 x 300 px é obrigatório!',
+                'imagen02.required' => 'O banner de 768 x 300 px é obrigatório!',
+            ]);
+
+            
+
+            $caminhoImagem1 = $request->imagen01->store('img/produtos', 'public');
+            $caminhoImagem2 = $request->imagen02->store('img/produtos', 'public');
+            Banners::Create([
+                'maior_resolucao' => $caminhoImagem1,
+                'menor_resolucao' => $caminhoImagem2,
+            ]);
+
+            $banners = Banners::all();
+            return view('areaRestrita/ar_cadastrobanners', ['banners' => $banners])->with(['bannerAdd' => 'Banner adicionado com suscesso!']);;
+
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function DeletarBanner($id)
+    {
+        if(Auth()->check())
+        {
+            $Banner = Banners::findOrFail($id);
+
+            if (Storage::disk('public')->exists($Banner->menor_resolucao)) {
+                Storage::disk('public')->delete($Banner->menor_resolucao);
+            }
+            if (Storage::disk('public')->exists($Banner->maior_resolucao)) {
+                Storage::disk('public')->delete($Banner->maior_resolucao);
+            }
+            
+
+            $Banner->delete();
+
+            $banners = Banners::all();
+            return view('areaRestrita/ar_cadastrobanners', ['banners' => $banners])->with(['bannerRemove' => 'Banner excluido com suscesso!']);;
         }
         else
         {

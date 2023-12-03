@@ -25,11 +25,11 @@
             <div class="carousel-inner">
                 @foreach($banners as $banner)
                     <div class="carousel-item active" data-bs-interval="3000">
-                        <img src="{{ asset('site/img/slides/' . $banner->maior_resolucao ) }}" class="d-none d-md-block w-100" alt="">
+                        <img src="{{ asset('storage/' . $banner->maior_resolucao ) }}" class="d-none d-md-block w-100" alt="">
                         @if($banner->menor_resolucao === "")
-                            <img src="{{ asset('site/img/slides/' . $banner->maior_resolucao ) }}" class="d-block d-md-none  w-100" alt="">
+                            <img src="{{ asset('storage/' . $banner->maior_resolucao ) }}" class="d-block d-md-none  w-100" alt="">
                         @else
-                            <img src="{{ asset('site/img/slides/' . $banner->menor_resolucao ) }}" class="d-block d-md-none  w-100" alt="">
+                            <img src="{{ asset('storage/' . $banner->menor_resolucao ) }}" class="d-block d-md-none  w-100" alt="">
                         @endif
                     </div>
                 @endforeach

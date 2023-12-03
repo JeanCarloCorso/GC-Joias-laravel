@@ -45,7 +45,7 @@
                             <svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="{{ asset('site\bootstrap-icons.svg#plus-circle') }}"/></svg> Cadastrar Produto
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a href="{{ route('ar.banners') }}" class="list-group-item list-group-item-action">
                             <svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="{{ asset('site\bootstrap-icons.svg#play') }}"/></svg> Banner
                         </a>
