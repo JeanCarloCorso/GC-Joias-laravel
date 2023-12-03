@@ -38,7 +38,7 @@
                             <div
                                 class="col-6 offset-6 col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-0 col-xl-2 align-self-center mt-3">
                                 <div class="input-group">
-                                    <form action="{{ route('ar.editarProduto', ['id' => $produto->id]) }}" method="POST">
+                                    <form action="{{ route('ar.editarProduto', ['id' => $produto->id]) }}" method="GET">
                                         @csrf
                                         <button class="btn btn-outline-dark btn-sm custon-tamanho-btn" type="submit">
                                             <svg class="bi me-2" width="20" height="20">
@@ -75,6 +75,9 @@
         @endif
         @if (session('produtoCadastrado'))
             <div class="success-notification larger">{{ session('produtoCadastrado') }}</div>
+        @endif
+        @if (session('produtoEditado'))
+            <div class="success-notification larger">{{ session('produtoEditado') }}</div>
         @endif
     </div>
 

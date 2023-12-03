@@ -199,6 +199,33 @@ class AreaRestritaController extends Controller
                 ]);
             }
 
+            if ($request->hasFile('imagen02')) {
+                $caminhoImagem = $request->imagen02->store('img/produtos', 'public');
+                ImagemProdutos::create([
+                    'produto_id' => $novoProduto->id,
+                    'path' => $caminhoImagem,
+                    'principal' => false
+                ]);
+            }
+
+            if ($request->hasFile('imagen03')) {
+                $caminhoImagem = $request->imagen3->store('img/produtos', 'public');
+                ImagemProdutos::create([
+                    'produto_id' => $novoProduto->id,
+                    'path' => $caminhoImagem,
+                    'principal' => false
+                ]);
+            }
+
+            if ($request->hasFile('imagen04')) {
+                $caminhoImagem = $request->imagen4->store('img/produtos', 'public');
+                ImagemProdutos::create([
+                    'produto_id' => $novoProduto->id,
+                    'path' => $caminhoImagem,
+                    'principal' => false
+                ]);
+            }
+
             return redirect()->route('ar.produtos')->with(['produtoCadastrado' => 'Produto cadastrado com suscesso!']);
         }
         else
@@ -248,18 +275,48 @@ class AreaRestritaController extends Controller
         }
     }
 
-    public function SalvarEdicaoProduto($id)
+    public function SalvarEdicaoProduto(Request $request)
     {
-        dd("chegueri");
         if(Auth()->check())
         {
-            //$produto = Produtos::whereHas('imagens')->findOrFail($id);
-            //$generos = Generos::all();
-            //$categorias = Categorias::all();
+            $request->validate([
+                'nome' => 'required|min:3',
+                'quantidade' => 'required',
+                'preco' => 'required',
+                'descricaoCurta' => 'required',
+                'descricaoDetalhada' => 'required',
+                'genero' => 'required',
+                'categoria' => 'required',
+                //'imagen01' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                //'imagen02' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                //'imagen03' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                //'imagen04' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            ], [
+                'nome.required' => 'O campo nome é obrigatório!',
+                'nome.min' => 'O nome deve conter no mínimo :min caracteres!',
+                'quantidade.required' => 'O campo quantidade é obrigatório!',
+                'preco.required' => 'O campo preco é obrigatório!',
+                'descricaoCurta.required' => 'O campo descrição é obrigatório!',
+                'descricaoDetalhada.required' => 'O campo descrição é obrigatório!',
+                'genero.required' => 'Escolha um genero para o produto!',
+                'categoria.required' => 'Escolha uma categoria para o produto!',
+                //'imagen01.required' => 'A primeira imagem é obrigatória!',
+            ]);
 
-            //return view('areaRestrita/ar_edicaoProduto', ['produto' => $produto, 
-            //    'generos' => $generos, 'categorias' => $categorias]);
+            $produto = Produtos::findOrFail($request->id);
+            
+            $produto->nome = $request->nome;
+            $produto->quantidade = $request->quantidade;
+            $produto->custo = $request->custo;
+            $produto->preco = $request->preco;
+            $produto->categoria_id = $request->categoria;
+            $produto->genero_id = $request->genero;
+            $produto->descricao_curta = $request->descricaoCurta;
+            $produto->descricao_detalhada = $request->descricaoDetalhada;
 
+            $produto->save();
+
+            return redirect()->route('ar.produtos')->with(['produtoEditado' => 'Produto editado com suscesso!']);
         }
         else
         {
