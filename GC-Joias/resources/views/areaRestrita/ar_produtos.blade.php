@@ -19,13 +19,12 @@
     <div class="row">
         @if(count($produtos) > 0)
             @foreach($produtos as $produto)
-
                 <ul class="list-group mb-3">
                     <li class="list-group-item py-3">
                         <div class="row g-3">
                             <div class="col-4 col-md-3 col-lg-2">
                                 <a href="#">
-                                    <img src="{{ asset('site/img/produtos/' . $produto->imagens[0]->nome) }}" class="img-thumbnail">
+                                    <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="img-thumbnail">
                                 </a>
                             </div>
                             <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left align-self-center">
@@ -34,21 +33,28 @@
                                         {{ $produto->nome }}</a></b>
                                 </h6>
 
-                                <p class="truncar-2l">{{ $produto->descricao }}</p>
+                                <p class="truncar-2l">{{ $produto->descricao_curta }}</p>
                             </div>
                             <div
                                 class="col-6 offset-6 col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-0 col-xl-2 align-self-center mt-3">
                                 <div class="input-group">
-                                    <button class="btn btn-outline-dark btn-sm custon-tamanho-btn" type="button">
-                                        <svg class="bi me-2" width="20" height="20">
-                                            <use xlink:href="{{ asset('site\bootstrap-icons.svg#pencil') }}"/>
-                                        </svg> Editar
-                                    </button>
-                                    <button class="btn btn-outline-danger border-dark btn-sm custon-tamanho-btn" type="button">
-                                        <svg class="bi me-2" width="20" height="20">
-                                            <use xlink:href="{{ asset('site\bootstrap-icons.svg#trash') }}"/>
-                                        </svg> Apagar
-                                    </button>
+                                    <form action="{{ route('ar.editarProduto', ['id' => $produto->id]) }}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-outline-dark btn-sm custon-tamanho-btn" type="submit">
+                                            <svg class="bi me-2" width="20" height="20">
+                                                <use xlink:href="{{ asset('site\bootstrap-icons.svg#pencil') }}"/>
+                                            </svg> Editar
+                                        </button>
+                                    </form>
+                                    <form action="{{ route('ar.excluirProduto', ['id' => $produto->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-outline-danger border-dark btn-sm custon-tamanho-btn" type="submit">
+                                            <svg class="bi me-2" width="20" height="20">
+                                                <use xlink:href="{{ asset('site\bootstrap-icons.svg#trash') }}"/>
+                                            </svg> Apagar
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

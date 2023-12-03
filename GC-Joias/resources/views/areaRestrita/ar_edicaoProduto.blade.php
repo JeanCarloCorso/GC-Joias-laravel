@@ -6,9 +6,9 @@
     
     <link rel="stylesheet" href={{ asset('css/estilos.css') }}>
 
-    <form class="col-8" method="post" enctype="multipart/form-data" action="{{ route('ar.salvaNovoProduto') }}">
+    <form class="col-8" method="post" enctype="multipart/form-data" action="{{ route('ar.salvarEdicaoProduto', ['id' => $produto->id]) }}">
         @csrf
-        <h1>Cadastro de Produto</h1>
+        <h1>Editar o Produto</h1>
 
         <div class="input-group mb-3">
             <div class="d-flex justify-content-between">

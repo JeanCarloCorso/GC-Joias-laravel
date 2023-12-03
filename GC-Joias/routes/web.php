@@ -31,6 +31,9 @@ Route::get('/login/mudasenha', [AreaRestritaController::class, 'TrocarSenha'])->
 Route::post('/login/mudasenha', [AreaRestritaController::class, 'SalvarNovaSenha'])->name('ar.salvaSenha');
 Route::get('/login/cadastroproduto', [AreaRestritaController::class, 'CadastroDeProduto'])->name('ar.cadastroProduto');
 Route::post('/login/cadastroproduto', [AreaRestritaController::class, 'SalvarNovoProduto'])->name('ar.salvaNovoProduto');
+Route::delete('/login/delete/{id}', [AreaRestritaController::class, 'ExcluirProduto'])->name('ar.excluirProduto');
+Route::post('/login/edit/{id}', [AreaRestritaController::class, 'EditarProduto'])->name('ar.editarProduto');
+Route::post('/login/saveedit/{id}', [AreaRestritaController::class, 'SalvarEdicaoProduto'])->name('ar.salvarEdicaoProduto');
 
 
 Route::get('/', [ProdutosController::class, 'Show'])->name('home.show');

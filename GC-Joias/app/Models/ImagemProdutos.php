@@ -13,7 +13,7 @@ class ImagemProdutos extends Model
 
     protected $fillable = [
         'produto_id',
-        'nome',
+        'path',
         'principal'
     ];
 

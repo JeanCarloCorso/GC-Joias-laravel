@@ -87,14 +87,14 @@
                         <a href="#" class="position-absolute end-0 p-2 text-danger">
                             <i class="bi-suit-heart" style="font-size: 24px; line-height: 24px;"></i>
                         </a>
-                        <img src="{{ asset('site/img/produtos/' . $produto->imagens[0]->nome) }}" class="card-img-top">
+                        <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="card-img-top">
                         <div class="card-header">
                             R$ {{ $produto->preco }}
                         </div>
                         <div class="card-body">
                             <h6 class="card-title truncar-2l">{{ $produto->nome }}</h6>
                             <p class="card-text truncar-3l">
-                                {{ $produto->descricao }}
+                                {{ $produto->descricao_curta }}
                             </p>
                         </div>
                         <div class="card-footer">

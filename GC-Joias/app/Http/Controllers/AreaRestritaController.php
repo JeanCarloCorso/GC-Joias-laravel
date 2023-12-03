@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AreaRestritaController extends Controller
 {
@@ -158,7 +159,8 @@ class AreaRestritaController extends Controller
                 'nome' => 'required|min:3',
                 'quantidade' => 'required',
                 'preco' => 'required',
-                'descricao' => 'required',
+                'descricaoCurta' => 'required',
+                'descricaoDetalhada' => 'required',
                 'genero' => 'required',
                 'categoria' => 'required',
                 'imagen01' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -170,7 +172,8 @@ class AreaRestritaController extends Controller
                 'nome.min' => 'O nome deve conter no mínimo :min caracteres!',
                 'quantidade.required' => 'O campo quantidade é obrigatório!',
                 'preco.required' => 'O campo preco é obrigatório!',
-                'descricao.required' => 'O campo descrição é obrigatório!',
+                'descricaoCurta.required' => 'O campo descrição é obrigatório!',
+                'descricaoDetalhada.required' => 'O campo descrição é obrigatório!',
                 'genero.required' => 'Escolha um genero para o produto!',
                 'categoria.required' => 'Escolha uma categoria para o produto!',
                 'imagen01.required' => 'A primeira imagem é obrigatória!',
@@ -183,21 +186,80 @@ class AreaRestritaController extends Controller
                 'preco' => $request->preco,
                 'categoria_id' => $request->categoria,
                 'genero_id' => $request->genero,
-                'descricao' => $request->descricao,
+                'descricao_curta' => $request->descricaoCurta,
+                'descricao_detalhada' => $request->descricaoDetalhada,
             ]);
 
             if ($request->hasFile('imagen01')) {
-                $imagem = $request->file('imagen01');
-                $nomeImagem = time() . '_' . $imagem->getClientOriginalName();
-                $caminhoImagem = $imagem->storeAs('public/site/img/produtos', $nomeImagem);
+                $caminhoImagem = $request->imagen01->store('img/produtos', 'public');
                 ImagemProdutos::create([
                     'produto_id' => $novoProduto->id,
-                    'nome' => $nomeImagem,
+                    'path' => $caminhoImagem,
                     'principal' => true
                 ]);
             }
 
             return redirect()->route('ar.produtos')->with(['produtoCadastrado' => 'Produto cadastrado com suscesso!']);
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function ExcluirProduto($id)
+    {
+        if(Auth()->check())
+        {
+            $produto = Produtos::findOrFail($id);
+            $imagens = ImagemProdutos::where('id', '=', $id)->get();
+
+            foreach ($imagens as $imagem) {
+                if (Storage::disk('public')->exists($imagem->path)) {
+                    Storage::disk('public')->delete($imagem->path);
+                }
+            }
+
+            $produto->delete();
+
+            return redirect()->route('ar.produtos')->with(['produtoExcluido' => 'Produto excluido com suscesso!']);
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function EditarProduto($id)
+    {
+        if(Auth()->check())
+        {
+            $produto = Produtos::whereHas('imagens')->findOrFail($id);
+            $generos = Generos::all();
+            $categorias = Categorias::all();
+
+            return view('areaRestrita/ar_edicaoProduto', ['produto' => $produto, 
+                'generos' => $generos, 'categorias' => $categorias]);
+
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function SalvarEdicaoProduto($id)
+    {
+        dd("chegueri");
+        if(Auth()->check())
+        {
+            //$produto = Produtos::whereHas('imagens')->findOrFail($id);
+            //$generos = Generos::all();
+            //$categorias = Categorias::all();
+
+            //return view('areaRestrita/ar_edicaoProduto', ['produto' => $produto, 
+            //    'generos' => $generos, 'categorias' => $categorias]);
+
         }
         else
         {

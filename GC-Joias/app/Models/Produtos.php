@@ -16,7 +16,8 @@ class Produtos extends Model
         'quantidade',
         'custo',
         'preco',
-        'descricao'
+        'descricao_detalhada',
+        'descricao_curta'
     ];
 
     public function imagens()

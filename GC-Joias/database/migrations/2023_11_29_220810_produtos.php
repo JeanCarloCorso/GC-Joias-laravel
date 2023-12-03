@@ -21,7 +21,8 @@ return new class extends Migration
             $table->integer('quantidade');
             $table->double('custo');
             $table->double('preco');
-            $table->text('descricao');
+            $table->text('descricao_detalhada');
+            $table->text('descricao_curta');
             $table->timestamps();
         });
     }
