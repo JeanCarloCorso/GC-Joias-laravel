@@ -437,23 +437,17 @@ class AreaRestritaController extends Controller
 
     public function DeletarCategoria($id)
     {
-        dd("não programado");
         if(Auth()->check())
         {
-            $Banner = Banners::findOrFail($id);
+            $produtos = Produtos::where('id', '=', $id)->get();
 
-            if (Storage::disk('public')->exists($Banner->menor_resolucao)) {
-                Storage::disk('public')->delete($Banner->menor_resolucao);
+            if(count($produtos) === 0){
+                $categoria = Categorias::findOrFail($id);
+                $categoria->delete();
             }
-            if (Storage::disk('public')->exists($Banner->maior_resolucao)) {
-                Storage::disk('public')->delete($Banner->maior_resolucao);
-            }
-            
 
-            $Banner->delete();
-
-            $banners = Banners::all();
-            return view('areaRestrita/ar_cadastrobanners', ['banners' => $banners])->with(['bannerRemove' => 'Banner excluido com suscesso!']);;
+            $categorias = Categorias::all();
+            return view('areaRestrita/ar_cadastroCategoria', ['categorias' => $categorias]);
         }
         else
         {

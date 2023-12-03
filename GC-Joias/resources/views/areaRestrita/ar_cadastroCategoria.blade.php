@@ -23,32 +23,41 @@
 
 
     @if(count($categorias) > 0)
-        @foreach($categorias as $categoria)
-            <ul class="list-group mb-3">
-                <li class="list-group-item py-3">
-                    <div class="row g-3">
-                        
-                        <div class="col-8 ">
-                            <label>{{ $categoria->descricao }}</label>
-                        </div>
-                        
-                        <div class="col-4 align-self-center mt-3">
-                            <div class="input-group">
-                                <form action="{{ route('ar.apagaCategoria', ['id' => $categoria->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-outline-danger border-dark btn-sm custon-tamanho-btn" type="submit">
-                                        <svg class="bi me-2" width="20" height="20">
-                                            <use xlink:href="{{ asset('site\bootstrap-icons.svg#trash') }}"/>
-                                        </svg> Apagar
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        @endforeach
+        <ul class="list-group mb-3">
+            <li class="list-group-item py-3">
+                <div class="row g-3">
+                    
+                    
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th>Categoria</th>
+                            <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($categorias as $categoria)
+                            <tr>
+                                <td>{{ $categoria->descricao }}</td>
+                                <td>
+                                    <form action="{{ route('ar.apagaCategoria', ['id' => $categoria->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-outline-danger border-dark btn-sm custon-tamanho-btn" type="submit">
+                                            <svg class="bi me-2" width="20" height="20">
+                                                <use xlink:href="{{ asset('site\bootstrap-icons.svg#trash') }}"/>
+                                            </svg> Apagar
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+        </ul>
     @else
         <h3>Nenhum banner encontrado :(</h3>
     @endif
