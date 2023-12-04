@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AreaRestritaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MensagensController;
 use App\Http\Controllers\ProdutosController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
@@ -37,10 +38,10 @@ Route::post('/login/saveedit', [AreaRestritaController::class, 'SalvarEdicaoProd
 Route::get('/login/banners', [AreaRestritaController::class, 'Banners'])->name('ar.banners');
 Route::post('/login/create/banner', [AreaRestritaController::class, 'SalvarBanner'])->name('ar.salvaNovoBanner');
 Route::delete('/login/delete/banner/{id}', [AreaRestritaController::class, 'DeletarBanner'])->name('ar.apagaBanner');
-
 Route::get('/login/categorias', [AreaRestritaController::class, 'Categorias'])->name('ar.categorias');
 Route::post('/login/create/categoria', [AreaRestritaController::class, 'SalvarCategoria'])->name('ar.salvaNovaCategoria');
 Route::delete('/login/delete/Categoria/{id}', [AreaRestritaController::class, 'DeletarCategoria'])->name('ar.apagaCategoria');
+Route::get('/login/mensagens', [MensagensController::class, 'Mensagens'])->name('ar.mensagens');
 
 
 Route::get('/', [ProdutosController::class, 'Show'])->name('home.show');
@@ -67,3 +68,7 @@ Route::get('/quemsomos', function () {
 Route::get('/contato', function () {
     return view('contato');
 });
+Route::get('/contato/confirmacao', function () {
+    return view('confirmacaoMensagem');
+})->name('confirmacaoMensagem');
+Route::post('/categoria', [MensagensController::class, 'SalvarMensagem'])->name('salvaNovaMensagem');

@@ -37,8 +37,8 @@
             <div class="row gx-3">
                 <div class="col-4">
                     <div class="list-group">
-                        <a href="{{ route('login.store') }}" class="list-group-item list-group-item-action bg-danger text-light">
-                            <svg class="bi me-2" width="20" height="20" fill="white">
+                        <a href="{{ route('login.store') }}" class="list-group-item list-group-item-action">
+                            <svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="{{ asset('site\bootstrap-icons.svg#folder') }}"/></svg> Listar Produtos
                         </a>
                         <a href="{{ route('ar.cadastroProduto') }}" class="list-group-item list-group-item-action">
@@ -53,7 +53,7 @@
                             <svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="{{ asset('site\bootstrap-icons.svg#play') }}"/></svg> Banner
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a href="{{ route('ar.mensagens') }}" class="list-group-item list-group-item-action">
                             <svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="{{ asset('site\bootstrap-icons.svg#mailbox') }}"/></svg> Mensagens
                         </a>
