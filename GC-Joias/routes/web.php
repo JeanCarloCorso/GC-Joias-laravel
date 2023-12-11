@@ -3,7 +3,7 @@
 use App\Http\Controllers\AreaRestritaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MensagensController;
-use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
@@ -42,16 +42,18 @@ Route::get('/login/categorias', [AreaRestritaController::class, 'Categorias'])->
 Route::post('/login/create/categoria', [AreaRestritaController::class, 'SalvarCategoria'])->name('ar.salvaNovaCategoria');
 Route::delete('/login/delete/Categoria/{id}', [AreaRestritaController::class, 'DeletarCategoria'])->name('ar.apagaCategoria');
 Route::get('/login/mensagens', [MensagensController::class, 'Mensagens'])->name('ar.mensagens');
+Route::get('/login/mensagens/{id}', [MensagensController::class, 'MarcarLidaNaoLida'])->name('ar.marcarLidaNaoLida');
+Route::post('/login/mensagens', [MensagensController::class, 'OrdenarMensagens'])->name('ar.ordenarMensagens');
 
 
-Route::get('/', [ProdutosController::class, 'Show'])->name('home.show');
+Route::get('/', [HomeController::class, 'Show'])->name('home.show');
 
 Route::prefix('filtro')->group(function() {
-    Route::any('nome', [ProdutosController::class, 'FiltraPorNome'])->name('filtra.produto.nome');
+    Route::any('nome', [HomeController::class, 'FiltraPorNome'])->name('filtra.produto.nome');
 });
-Route::any('ordenado', [ProdutosController::class, 'OrdenarProduto'])->name('ordena.produto');
+Route::any('ordenado', [HomeController::class, 'OrdenarProduto'])->name('ordena.produto');
 
-//Route::get('/filtro/nome', [ProdutosController::class, 'Show']);
+//Route::get('/filtro/nome', [HomeController::class, 'Show']);
 
 Route::get('/privacidade', function () {
     return view('privacidade');

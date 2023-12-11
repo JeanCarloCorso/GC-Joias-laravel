@@ -7,7 +7,7 @@ use App\Models\ImagemProdutos;
 use Illuminate\Http\Request;
 use App\Models\Produtos;
 
-class ProdutosController extends Controller
+class HomeController extends Controller
 {
     public function Show()
     {

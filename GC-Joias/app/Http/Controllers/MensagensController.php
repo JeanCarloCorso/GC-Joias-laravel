@@ -34,7 +34,7 @@ class MensagensController extends Controller
     {
         if(Auth()->check())
         {
-            $mensagens = Mensagens::orderByDesc('created_at')->get();
+            $mensagens = Mensagens::orderBy('created_at')->get();
 
             return view('areaRestrita/ar_centralMensagens', ['mensagens' => $mensagens]);
         }
@@ -43,4 +43,57 @@ class MensagensController extends Controller
             return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
         }
     }
+
+    public function MarcarLidaNaoLida($id)
+    {
+        if(Auth()->check())
+        {
+            $mensagem = Mensagens::findOrFail($id);
+            if($mensagem->respondida)
+            {
+                $mensagem->respondida = false;
+            }
+            else
+            {
+                $mensagem->respondida = true;
+            }
+
+            $mensagem->save();
+            return redirect()->route('ar.mensagens');
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
+    public function OrdenarMensagens(Request $request)
+    {
+        if(Auth()->check())
+        {
+            $ordenacao = $request->input('ordenacao');
+
+            $mensagens = Mensagens::query();
+
+            switch ($ordenacao) 
+            {
+                case '1':
+                    $mensagens->where('respondida', '=', true);
+                    break;
+                case '2':
+                    $mensagens->where('respondida', '=', false);
+                    break;
+                default:
+                    return redirect()->route('ar.mensagens');
+                    break;
+            }
+            $mensagens = $mensagens->get();
+            return view('areaRestrita/ar_centralMensagens', ['mensagens' => $mensagens]);
+        }
+        else
+        {
+            return redirect()->route('login.index')->withErrors(['naoLogado' => 'Login necessário!']);
+        }
+    }
+
 }
