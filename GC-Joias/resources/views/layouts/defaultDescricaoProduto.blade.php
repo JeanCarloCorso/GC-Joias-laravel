@@ -30,7 +30,7 @@
                         <a href="/" class="nav-link text-white">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/cadastro.html" class="nav-link text-white">Receber Novidades</a>
+                        <a href="/contato" class="nav-link text-white">Contato pelo Site</a>
                     </li>
                 </ul>
             </div>
