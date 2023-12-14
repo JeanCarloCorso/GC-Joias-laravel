@@ -38,7 +38,7 @@
     </nav>
 
     <main class="flex-fill">
-        <div class="container">
+        <div class="container-fluid">
 
             @yield('content')
 

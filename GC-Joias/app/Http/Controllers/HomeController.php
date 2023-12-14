@@ -65,4 +65,12 @@ class HomeController extends Controller
         $banners = Banners::all();
         return view('home', ['produtoscomImagens' => $produtosComImagemPrincipal, 'banners' => $banners]);
     }
+
+    public function DetalhesProduto($id)
+    {
+        $produto = Produtos::whereHas('imagens')->where('id', '=', $id)->first();
+
+        return view('detalheProduto', 
+            ['produto' => $produto]);
+    }
 }

@@ -32,7 +32,7 @@
     </nav>
 
     <main class="flex-fill">
-        <div class="container">
+        <div class="container-fluid">
             <h3>Área Restrita</h3>
             <div class="row gx-3">
                 <div class="col-4">

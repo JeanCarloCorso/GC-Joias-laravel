@@ -208,9 +208,9 @@ class AreaRestritaController extends Controller
                     'principal' => false
                 ]);
             }
-
+            
             if ($request->hasFile('imagen03')) {
-                $caminhoImagem = $request->imagen3->store('img/produtos', 'public');
+                $caminhoImagem = $request->imagen03->store('img/produtos', 'public');
                 ImagemProdutos::create([
                     'produto_id' => $novoProduto->id,
                     'path' => $caminhoImagem,
@@ -219,7 +219,7 @@ class AreaRestritaController extends Controller
             }
 
             if ($request->hasFile('imagen04')) {
-                $caminhoImagem = $request->imagen4->store('img/produtos', 'public');
+                $caminhoImagem = $request->imagen04->store('img/produtos', 'public');
                 ImagemProdutos::create([
                     'produto_id' => $novoProduto->id,
                     'path' => $caminhoImagem,

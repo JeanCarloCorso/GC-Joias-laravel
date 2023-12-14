@@ -62,17 +62,17 @@
                 <!--filtros-->
                 <div class="col-12 col-md-7">
                     <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
-                    <form class="d-inline-block" id="formOrdenacao" method="post" action="{{ route('ordena.produto') }}">
-                        @csrf <!-- Adicione o token CSRF -->
-                        <select class="form-select form-select-sm" name="ordenacao" onchange="submitForm()"> <!-- Adicione onchange para chamar a função JS -->
-                            <option disabled selected hidden>Ordenar</option>
-                            <option value="0">Ordenar pelo nome</option>
-                            <option value="1">Ordenar pelo menor preço</option>
-                            <option value="2">Ordenar pelo maior preço</option>
-                            <option value="3">Ordenar pelo mais recente</option>
-                            <option value="4">Ordenar pelo mais antigo</option>
-                        </select>
-                    </form>
+                        <form class="d-inline-block" id="formOrdenacao" method="post" action="{{ route('ordena.produto') }}">
+                            @csrf <!-- Adicione o token CSRF -->
+                            <select class="form-select form-select-sm" name="ordenacao" onchange="submitForm()"> <!-- Adicione onchange para chamar a função JS -->
+                                <option disabled selected hidden>Ordenar</option>
+                                <option value="0">Ordenar pelo nome</option>
+                                <option value="1">Ordenar pelo menor preço</option>
+                                <option value="2">Ordenar pelo maior preço</option>
+                                <option value="3">Ordenar pelo mais recente</option>
+                                <option value="4">Ordenar pelo mais antigo</option>
+                            </select>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@
                         </a>
                         <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="card-img-top">
                         <div class="card-header">
-                            R$ {{ $produto->preco }}
+                            R$ {{ number_format($produto->preco, 2, ',', '.') }}
                         </div>
                         <div class="card-body">
                             <h6 class="card-title truncar-2l">{{ $produto->nome }}</h6>
@@ -98,8 +98,8 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <a href="carrinho.html" class="btn btn-danger mt-2 d-block">
-                                Adicionar ao Carrinho
+                            <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn btn-danger mt-2 d-block">
+                                Ver Detalhes
                             </a>
                             <small class="text-success">{{ $produto->quantidade }} em estoque</small>
                         </div>
@@ -112,40 +112,7 @@
     @endif
     <!--paginacao quando for implementada -->
     <hr class="mt-3">
-    <div class="row pb-3">
-        <div class="col-12">
-            <div class="d-flex flex-row-reverse justify-content-center">
-                <nav class="d-inline-block me-3">
-                    <ul class="pagination pagination-sm my-0">
-                        <li class="page-item">
-                            <a class="page-link" href="#">Anterior</a>
-                        </li>
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">4</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">5</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">6</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Próxima</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
+    
 @endsection
 
 <script>

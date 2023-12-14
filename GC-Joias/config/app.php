@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
+    'telefone' => '+55 (49) 9 9170-7070',
+    'telefoneNumero' => +5549991707070,
+    'email' => 'email@dominio.com',
     /*
     |--------------------------------------------------------------------------
     | Application Name

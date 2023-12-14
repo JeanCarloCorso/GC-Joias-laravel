@@ -1,0 +1,61 @@
+.text-block {
+    padding: 20px;
+    background-color: #fbfaff;
+    border: 1px solid #fcfcfc;
+    border-radius: 20px;
+}
+
+.imagens-block {
+    padding: 20px;
+    background-color: #fbfaff;
+    border: 1px solid #fcfcfc;
+    border-radius: 20px;
+}
+
+.thumbnail {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+}
+
+
+
+.heading {
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #272728;
+}
+
+.h1 {
+    margin-bottom: 20px;
+    font-size: calc(15px - (15px - 24px));
+    line-height: 1.45;
+}
+
+.product-block-list__item--info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(50% - 15px);
+    height: 100%;
+}
+
+
+
+.whatsapp-button {
+    display: inline-block;
+    background-color: #DC3545;
+    color: white; /* Cor do texto em branco */
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold; /* Texto em negrito */
+    border: none;
+    cursor: pointer;
+}

@@ -52,6 +52,7 @@ Route::prefix('filtro')->group(function() {
     Route::any('nome', [HomeController::class, 'FiltraPorNome'])->name('filtra.produto.nome');
 });
 Route::any('ordenado', [HomeController::class, 'OrdenarProduto'])->name('ordena.produto');
+Route::any('produto/{id}', [HomeController::class, 'DetalhesProduto'])->name('produto.detalhes');
 
 //Route::get('/filtro/nome', [HomeController::class, 'Show']);
 
