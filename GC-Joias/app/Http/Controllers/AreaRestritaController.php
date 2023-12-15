@@ -240,8 +240,8 @@ class AreaRestritaController extends Controller
         if(Auth()->check())
         {
             $produto = Produtos::findOrFail($id);
-            $imagens = ImagemProdutos::where('id', '=', $id)->get();
-
+            $imagens = ImagemProdutos::where('produto_id', '=', $id)->get();
+            
             foreach ($imagens as $imagem) {
                 if (Storage::disk('public')->exists($imagem->path)) {
                     Storage::disk('public')->delete($imagem->path);
