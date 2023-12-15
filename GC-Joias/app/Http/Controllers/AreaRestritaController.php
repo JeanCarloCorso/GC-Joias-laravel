@@ -354,8 +354,8 @@ class AreaRestritaController extends Controller
 
             
 
-            $caminhoImagem1 = $request->imagen01->store('img/produtos', 'public');
-            $caminhoImagem2 = $request->imagen02->store('img/produtos', 'public');
+            $caminhoImagem1 = $request->imagen01->store('img/banners', 'public');
+            $caminhoImagem2 = $request->imagen02->store('img/banners', 'public');
             Banners::Create([
                 'maior_resolucao' => $caminhoImagem1,
                 'menor_resolucao' => $caminhoImagem2,
