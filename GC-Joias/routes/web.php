@@ -58,20 +58,23 @@ Route::any('produto/{id}', [HomeController::class, 'DetalhesProduto'])->name('pr
 
 Route::get('/privacidade', function () {
     return view('privacidade');
-});
+})->name('privacidade.show');
 
 Route::get('/termos', function () {
     return view('termos');
-});
+})->name('termos.show');
 
 Route::get('/quemsomos', function () {
     return view('quemsomos');
-});
+})->name('quemsomos.show');
 
 Route::get('/contato', function () {
     return view('contato');
-});
+})->name('contato.show');
+
 Route::get('/contato/confirmacao', function () {
     return view('confirmacaoMensagem');
 })->name('confirmacaoMensagem');
-Route::post('/categoria', [MensagensController::class, 'SalvarMensagem'])->name('salvaNovaMensagem');
+
+Route::post('/mensagem', [MensagensController::class, 'SalvarMensagem'])->name('salvaNovaMensagem');
+

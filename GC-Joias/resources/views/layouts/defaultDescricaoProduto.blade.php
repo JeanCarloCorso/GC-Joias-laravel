@@ -52,18 +52,18 @@
                     &copy; 2023 - GC Jóias<br>
                 </div>
                 <div class="col-12 col-md-4 text-center">
-                    <a href="/privacidade" class="text-decoration-none text-dark">
+                    <a href="{{ route('privacidade.show') }}" class="text-decoration-none text-dark">
                         Política de Privacidade
                     </a><br>
-                    <a href="/termos" class="text-decoration-none text-dark">
+                    <a href="{{ route('termos.show') }}" class="text-decoration-none text-dark">
                         Termos de Uso
                     </a><br>
-                    <a href="/quemsomos" class="text-decoration-none text-dark">
+                    <a href="{{ route('quemsomos.show') }}" class="text-decoration-none text-dark">
                         Quem Somos
                     </a>
                 </div>
                 <div class="col-12 col-md-4 text-center">
-                    <a href="/contato" class="text-decoration-none text-dark">
+                    <a href="{{ route('contato.show') }}" class="text-decoration-none text-dark">
                         Contato pelo Site
                     </a><br>
                     E-mail: <a href="{{ config('app.email') }}" class="text-decoration-none text-dark">
