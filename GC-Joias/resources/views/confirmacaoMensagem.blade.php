@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', ':: Privacidade')
+@section('title', ':: Confirmação')
 
 @section('content')
     <h1>Mensagem Recebida!</h1>

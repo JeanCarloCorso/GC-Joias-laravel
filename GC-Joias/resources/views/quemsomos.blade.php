@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', ':: Privacidade')
+@section('title', ':: Quem Somos')
 
 @section('content')
     <h2>Quem Somos?</h2>

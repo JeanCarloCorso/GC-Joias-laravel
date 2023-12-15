@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', ':: Privacidade')
+@section('title', ':: Contato')
 
 @section('content')
     <div class="row justify-content-center">

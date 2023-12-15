@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', ':: Privacidade')
+@section('title', ':: Termos')
 
 @section('content')
     <h2><span style="color: rgb(68, 68, 68);">1. Termos</span></h2>

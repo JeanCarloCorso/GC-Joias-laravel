@@ -1,5 +1,7 @@
 @extends('layouts.defaultDescricaoProduto')
 
+@section('title', ':: Detalhes')
+
 @section('content')
     <link rel="stylesheet" href={{ asset('css\estilosPaginaDetalheProduto.css') }}>
      

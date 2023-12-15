@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', ':: Privacidade')
+@section('title', ':: Login')
 
 @section('content')
 
