@@ -331,7 +331,7 @@ class AreaRestritaController extends Controller
         {
             $banners = Banners::all();
 
-            return view('areaRestrita/ar_cadastrobanners', ['banners' => $banners]);
+            return view('areaRestrita/ar_cadastroBanners', ['banners' => $banners]);
 
         }
         else
