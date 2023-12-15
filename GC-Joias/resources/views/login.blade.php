@@ -24,7 +24,7 @@
             <label for="chkLembrar" class="form-check-label">Lembrar de mim</label>
         </div>
 
-        <button type="submit" class="btn btn-lg btn-danger">Entrar</button>
+        <button type="submit" class="btn btn-lg btn-custon">Entrar</button>
 
         <p class="mt-3">
             Se tiver problemas ao efetuar login, entre em contato com o administrador do sistema!

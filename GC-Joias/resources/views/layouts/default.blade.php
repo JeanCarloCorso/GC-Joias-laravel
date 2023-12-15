@@ -10,6 +10,8 @@
     <link rel="stylesheet" href={{ asset('site/bootstrap.min.css') }}> 
     
     <link rel="stylesheet" href={{ asset('css/estilos.css') }}>
+    <link rel="stylesheet" href={{ asset('css\defaultViews.css') }}>
+
     <title>GC Jóias @yield('title', '')</title>
 
     <link rel="icon" type="image/x-icon" href={{ asset('site/img/favicon/favicon.ico') }}>
@@ -18,9 +20,12 @@
 
 <body style="min-width: 372px;">
     <!--navebar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger border-bottom shadow-sm mb-3">
+    <nav class="navbar navbar-expand-lg navbar-dark custom-nav border-bottom shadow-sm mb-3">
         <div class="container">
-            <a class="navbar-brand" href="/"><b>GC Jóias</b></a>
+            <a class="navbar-brand custom-navbar-brand" href="/">
+                <img src="/site/img/logo/logo.png" alt="Logo" class="logo-image">
+                <b>GC Jóias</b>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                 <span class="navbar-toggler-icon"></span>
             </button>

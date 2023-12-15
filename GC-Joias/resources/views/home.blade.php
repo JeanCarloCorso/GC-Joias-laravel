@@ -54,7 +54,7 @@
                         @csrf
                         <div class="input-group input-group-sm">
                             <input name="nome" type="text" class="form-control" placeholder="Digite aqui o que procura">
-                            <button class="btn btn-danger" type="submit">Buscar</button>
+                            <button class="btn btn-custon" type="submit">Buscar</button>
                         </div>
                     </form>
                 </div>
@@ -98,7 +98,7 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn btn-danger mt-2 d-block">
+                            <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn btn-custon mt-2 d-block">
                                 Ver Detalhes
                             </a>
                             <small class="text-success">{{ $produto->quantidade }} em estoque</small>

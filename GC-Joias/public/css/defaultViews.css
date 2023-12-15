@@ -1,0 +1,14 @@
+.custom-nav {
+    background-color: #323653;
+}
+
+.custom-navbar-brand {
+    color: #C7A440; 
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif; 
+}
+
+.logo-image {
+    max-width: 100%; 
+    max-width: 40px; 
+    height: auto; 
+}
