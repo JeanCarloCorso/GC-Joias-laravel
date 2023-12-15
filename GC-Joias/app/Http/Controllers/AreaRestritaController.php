@@ -362,7 +362,7 @@ class AreaRestritaController extends Controller
             ]);
 
             $banners = Banners::all();
-            return view('areaRestrita/ar_cadastrobanners', ['banners' => $banners])->with(['bannerAdd' => 'Banner adicionado com suscesso!']);;
+            return view('areaRestrita/ar_cadastroBanners', ['banners' => $banners])->with(['bannerAdd' => 'Banner adicionado com suscesso!']);;
 
         }
         else
@@ -388,7 +388,7 @@ class AreaRestritaController extends Controller
             $Banner->delete();
 
             $banners = Banners::all();
-            return view('areaRestrita/ar_cadastrobanners', ['banners' => $banners])->with(['bannerRemove' => 'Banner excluido com suscesso!']);;
+            return view('areaRestrita/ar_cadastroBanners', ['banners' => $banners])->with(['bannerRemove' => 'Banner excluido com suscesso!']);;
         }
         else
         {
