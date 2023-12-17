@@ -1,0 +1,115 @@
+.custon-bloco {
+    margin-top: 64px; 
+    text-align: center;
+}
+
+hr.custon {
+    max-width: 80px;
+    border: 4px solid #007bff;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.custon-row {
+    margin-top: 15px; 
+}
+
+.custon-row-sobre {
+    margin-top: 100px; 
+}
+
+.categoria-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.categoria-container {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Aplica a imagem e configura a transição */
+.categoria-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.7s ease; /* Adiciona transição para a propriedade transform */
+}
+
+/* Define a escala de zoom ao passar o mouse */
+.categoria-container:hover::before {
+    transform: scale(1.1); /* Aplica um efeito de zoom ao passar o mouse */
+}
+
+/* Estilos específicos para a categoria mulher */
+.categoria-container.mulher::before {
+    background-image: url('/site/img/categorias/categoria-mulher.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Estilos específicos para a categoria homem */
+.categoria-container.homem::before {
+    background-image: url('/site/img/categorias/categoria-homem.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.texto {
+    position: relative;
+    z-index: 1;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+.btn {
+    border-radius: 10px; /* Adiciona cantos arredondados */
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); /* Adiciona sombra */
+    display: inline-block;
+    transition: transform 0.3s ease-in-out; /* Adiciona transição suave */
+}
+
+.btn:hover {
+    transform: scale(1.05); /* Efeito de escala no hover */
+}
+
+.card {
+    border-radius: 10px; /* Cantos arredondados para o card */
+}
+
+.custom-span {
+    font-size: 1em; /* Tamanho da fonte */
+    color: #333; /* Cor do texto */
+    display: block;
+    margin-bottom: 5px; /* Espaçamento inferior entre spans */
+}
+
+.span-preco {
+    font-size: 0.9em;
+    color: #0c1347 !important;
+    font-weight: bold;
+    text-align: left;
+}
+
+.truncar-1l {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

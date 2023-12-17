@@ -2,11 +2,12 @@
 
 @section('title', ':: Home')
 
-@section('content')
+@section('carrousel')
     <link rel="stylesheet" href={{ asset('css/estilos.css') }}>
+    <link rel="stylesheet" href={{ asset('css/home.css') }}>
 
     <!--banner-->
-    <header class="container">
+    <header>
         <div id="carouselMain" class="carousel slide carousel-dark" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 @php
@@ -24,7 +25,7 @@
             </div>
             <div class="carousel-inner">
                 @foreach($banners as $banner)
-                    <div class="carousel-item active" data-bs-interval="3000">
+                    <div class="carousel-item active magem-container" data-bs-interval="3000">
                         <img src="{{ asset('storage/' . $banner->maior_resolucao ) }}" class="d-none d-md-block w-100" alt="">
                         @if($banner->menor_resolucao === "")
                             <img src="{{ asset('storage/' . $banner->maior_resolucao ) }}" class="d-block d-md-none  w-100" alt="">
@@ -42,81 +43,94 @@
                 <span class="carousel-control-next-icon"></span>
                 <span class="visually-hidden">Próximo</span>
             </button>
-            <hr class="mt-3">
         </div>
     </header>
+@endsection
 
-    <!--Busca + ordenar-->
-    <div class="row">
-                <!--Busca-->
-                <div class="col-12 col-md-5">
-                    <form class="justify-content-center justify-content-md-start mb-3 mb-md-0" method="post" action="{{ route('filtra.produto.nome') }}">
-                        @csrf
-                        <div class="input-group input-group-sm">
-                            <input name="nome" type="text" class="form-control" placeholder="Digite aqui o que procura">
-                            <button class="btn btn-custon" type="submit">Buscar</button>
+@section('content')
+
+    <!--Exibe as categorias-->
+    <div class="custon-bloco">
+        <h3>CATEGORIAS</h3>
+        <hr class="custon">
+        <div class="row g-4 justify-content-center custon-row">
+            <div class="col-12 col-md-4">
+                <a href="/categoria/mulher" class="categoria-link">
+                    <div class="categoria-container mulher">
+                        <div class="texto">
+                            <span style="font-size: 2em;">MULHERES</span></br>
+                            <span>{{ $qtdProdutosFemininos }} Produtos</span>
                         </div>
-                    </form>
-                </div>
-
-                <!--filtros-->
-                <div class="col-12 col-md-7">
-                    <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
-                        <form class="d-inline-block" id="formOrdenacao" method="post" action="{{ route('ordena.produto') }}">
-                            @csrf <!-- Adicione o token CSRF -->
-                            <select class="form-select form-select-sm" name="ordenacao" onchange="submitForm()"> <!-- Adicione onchange para chamar a função JS -->
-                                <option disabled selected hidden>Ordenar</option>
-                                <option value="0">Ordenar pelo nome</option>
-                                <option value="1">Ordenar pelo menor preço</option>
-                                <option value="2">Ordenar pelo maior preço</option>
-                                <option value="3">Ordenar pelo mais recente</option>
-                                <option value="4">Ordenar pelo mais antigo</option>
-                            </select>
-                        </form>
                     </div>
-                </div>
+                </a>
             </div>
-            <hr class="mt-1">
-
-    <!--Listagem de Produtos-->
-    @if(count($produtoscomImagens) > 0)
-        <div class="row g-3 justify-content-center">
-            @foreach($produtoscomImagens as $produto)
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch mb-4">
-                    <div class="card text-center bg-light">
-                        <a href="#" class="position-absolute end-0 p-2 text-danger">
-                            <i class="bi-suit-heart" style="font-size: 24px; line-height: 24px;"></i>
-                        </a>
-                        <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="card-img-top">
-                        <div class="card-header">
-                            R$ {{ number_format($produto->preco, 2, ',', '.') }}
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title truncar-2l">{{ $produto->nome }}</h6>
-                            <p class="card-text truncar-3l">
-                                {{ $produto->descricao_curta }}
-                            </p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn btn-custon mt-2 d-block">
-                                Ver Detalhes
-                            </a>
-                            <small class="text-success">{{ $produto->quantidade }} em estoque</small>
+            <div class="col-12 col-md-4">
+                <a href="/categoria/homem" class="categoria-link">
+                    <div class="categoria-container homem">
+                        <div class="texto">
+                            <span style="font-size: 2em;">HOMENS</span></br>
+                            <span>{{ $qtdProdutosMasculinos }} Produtos</span>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                </a>
+            </div>
         </div>
-    @else
-        <h3>Nenhum produto encontrado :(</h3>
+    </div>
+
+    <!--Exibe os mais recentes-->
+    @if(count($produtoscomImagens) > 0)
+        <div class="custon-bloco">
+            <h3>PRODUTOS EM DESTAQUE</h3>
+            <hr class="custon">
+            <div class="row g-3 justify-content-center custon-row">
+            @foreach($produtoscomImagens as $produto)
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                    <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn mt-2 d-block">
+                        <div class="card text-center bg-light">
+                            <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="card-img-top">
+                        </div>
+                        <div>
+                            <span class="custom-span truncar-1l">{{ $produto->nome }}</span>
+                            <span class="custom-span span-preco">R$ {{ number_format($produto->preco, 2, ',', '.') }}</span>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+            </div>
+        </div>
     @endif
-    <!--paginacao quando for implementada -->
-    <hr class="mt-3">
+
+    <div class="row g-3 custon-row-sobre justify-content-center" style="background-color: white; margin-bottom: 50px;">
+        <form class="col-sm-10 col-md-8 col-lg-6" method="post" action="{{ route('salvaNovaMensagem') }}">
+            @csrf
+            <div class="custon-bloco">
+                <h3>CONTATO</h3>
+                <hr class="custon"><br>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" name="nome" id="txtNomeCompleto" class="form-control" placeholder=" " autofocus>
+                <label for="txtNomeCompleto">Nome Completo</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="email" id="txtEmail" name="email" class="form-control" placeholder=" ">
+                <label for="txtEmail">E-mail</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <textarea id="txtMensagem" name="mensagem" class="form-control" placeholder=" "
+                    style="height: 200px;"></textarea>
+                <label for="txtMensagem">Mensagem</label>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-lg btn-custon w-100">Enviar Mensagem</button>
+            </div>
+        </form>
+    </div>
+    
+    
     
 @endsection
 
-<script>
-    function submitForm() {
-        document.getElementById("formOrdenacao").submit();
-    }
-</script>

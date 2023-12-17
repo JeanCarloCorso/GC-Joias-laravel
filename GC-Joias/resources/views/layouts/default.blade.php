@@ -16,7 +16,7 @@
     
 </head>
 
-<body">
+<body style="background-color: #F9F9F9;">
     <!--navebar dispositivos grandes-->
     <nav class="navbar navbar-expand-lg navbar-dark border-bottom custom-nav shadow-sm mb-3 d-lg-block d-none">
         <div class="container">
@@ -78,7 +78,10 @@
         </ul>
     </div>
 
-    <div class="container-fluid content-below-nav">
+    <div class="content-below-nav">
+        @yield('carrousel')
+    </div>
+    <div class="container-fluid">
         @yield('content')
     </div>
   

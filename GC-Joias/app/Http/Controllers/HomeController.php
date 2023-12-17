@@ -13,10 +13,15 @@ class HomeController extends Controller
     {
         $produtosComImagemPrincipal = Produtos::whereHas('imagens')->where('quantidade', '>', 0)
             ->orderBy('nome', 'asc')->get();
+        $qtdProdutosUnisex = $produtosComImagemPrincipal->where('genero_id', 3)->count();
+        $qtdProdutosMasculinos = $produtosComImagemPrincipal->where('genero_id', 1)->count() + $qtdProdutosUnisex;
+        $qtdProdutosFemininos = $produtosComImagemPrincipal->where('genero_id', 2)->count() + $qtdProdutosUnisex;
+
         $banners = Banners::all();
 
         return view('home', 
-            ['produtoscomImagens' => $produtosComImagemPrincipal, 'banners' => $banners]);
+            ['produtoscomImagens' => $produtosComImagemPrincipal, 'banners' => $banners, 
+            'qtdProdutosMasculinos' => $qtdProdutosMasculinos, 'qtdProdutosFemininos' => $qtdProdutosFemininos]);
     }
 
     public function FiltraPorNome(Request $nome)
