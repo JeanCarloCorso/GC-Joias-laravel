@@ -1,4 +1,4 @@
-@extends('layouts.defaultDescricaoProduto')
+@extends('layouts.default')
 
 @section('title', ':: Detalhes')
 

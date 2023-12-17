@@ -8,9 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href={{ asset('site/bootstrap.min.css') }}> 
-    
-    <link rel="stylesheet" href={{ asset('css/estilos.css') }}>
-    <link rel="stylesheet" href={{ asset('css\defaultViews.css') }}>
+    <link rel="stylesheet" href={{ asset('css/newlayout.css') }}>
 
     <title>GC Jóias @yield('title', '')</title>
 
@@ -18,63 +16,97 @@
     
 </head>
 
-<body style="min-width: 372px;">
-    <!--navebar-->
-    <nav class="navbar navbar-expand-lg navbar-dark custom-nav border-bottom shadow-sm mb-3">
+<body">
+    <!--navebar dispositivos grandes-->
+    <nav class="navbar navbar-expand-lg navbar-dark border-bottom custom-nav shadow-sm mb-3 d-lg-block d-none">
         <div class="container">
             <a class="navbar-brand custom-navbar-brand" href="/">
                 <img src="/site/img/logo/logo.png" alt="Logo" class="logo-image">
                 <b>GC Jóias</b>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto"> 
+            <div>
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a href="/" class="nav-link text-white">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('contato.show') }}" class="nav-link text-white">Contato pelo Site</a>
+                        <a href="/" class="nav-link text-white">Mulheres</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link text-white">Homens</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link text-white">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('contato.show') }}" class="nav-link text-white">Contato</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="flex-fill">
+    <!--navebar dispositivos pequenos-->
+    <nav class="navbar navbar-expand-lg navbar-dark border-bottom custom-nav shadow-sm mb-3 d-lg-none">
         <div class="container">
-
-            @yield('content')
-
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <a class="menuHamburger" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+                <a class="navbar-brand custom-navbar-brand" href="/">
+                    <img src="/site/img/logo/logo.png" alt="Logo" class="logo-image">
+                    <b>GC Jóias</b>
+                </a>
+                <div></div>
+            </div>
         </div>
-    </main>
+    </nav>
 
-    <footer class="border-top text-muted bg-light">
+    <!--Menu opções da nav para dispositivos pequenos-->
+    <div id="navMobile" class="hidden">
+        <button id="closeButton" onclick="closeNav()">
+            <svg class="bi me-2" width="40" height="40" style="fill: white;">
+                <use xlink:href="{{ asset('site\bootstrap-icons.svg#x') }}"/>
+            </svg>
+        </button>
+        <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/">Mulheres</a></li>
+            <li><a href="/">Homens</a></li>
+            <li><a href="/">Sobre</a></li>
+            <li><a href="/">Contato</a></li>
+        </ul>
+    </div>
+
+    <div class="container-fluid content-below-nav">
+        @yield('content')
+    </div>
+  
+    <footer class="border-top" style="background-color: #171825; color: white;">
         <div class="container">
             <div class="row py-3">
-                <div class="col-12 col-md-4 text-center">
-                    &copy; 2023 - GC Jóias<br>
+                <div class="slide1 col-12 col-md-4 text-center">
+                    &copy; 2023 - Copyright CorsoSoftwares<br>
                 </div>
-                <div class="col-12 col-md-4 text-center">
-                    <a href="{{ route('privacidade.show') }}" class="text-decoration-none text-dark">
+                <div class="slide2 col-12 col-md-4 text-center">
+                    <a href="{{ route('privacidade.show') }}" class="text-decoration-none text-white">
                         Política de Privacidade
                     </a><br>
-                    <a href="{{ route('termos.show') }}" class="text-decoration-none text-dark">
+                    <a href="{{ route('termos.show') }}" class="text-decoration-none text-white">
                         Termos de Uso
                     </a><br>
-                    <a href="{{ route('quemsomos.show') }}" class="text-decoration-none text-dark">
+                    <a href="{{ route('quemsomos.show') }}" class="text-decoration-none text-white">
                         Quem Somos
                     </a>
                 </div>
-                <div class="col-12 col-md-4 text-center">
-                    <a href="{{ route('contato.show') }}" class="text-decoration-none text-dark">
+                <div class="slide3 col-12 col-md-4 text-center">
+                    <a href="{{ route('contato.show') }}" class="text-decoration-none text-white">
                         Contato pelo Site
                     </a><br>
-                    E-mail: <a href="{{ config('app.email') }}" class="text-decoration-none text-dark">
+                    E-mail: <a href="{{ config('app.email') }}" class="text-decoration-none text-white">
                         {{ config('app.email') }}
                     </a><br>
-                    Telefone: <a href="phone:{{ config('app.telefone') }}" class="text-decoration-none text-dark">
+                    Telefone: <a href="phone:{{ config('app.telefone') }}" class="text-decoration-none text-white">
                         {{ config('app.telefone') }}
                     </a>
                 </div>
@@ -84,6 +116,7 @@
 
     <!-- Optional JavaScript -->
     <!-- Popper.js first, then Bootstrap JS -->
+    <script src={{ asset('js/navPrincipal.js') }}></script>
     <script src={{ asset('site/bootstrap.bundle.js') }}></script>
 </body>
 

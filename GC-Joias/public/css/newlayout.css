@@ -1,0 +1,83 @@
+.custom-nav {
+    background-color: #323653;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.custom-navbar-brand {
+    color: #C7A440; 
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif; 
+}
+
+.logo-image {
+    max-width: 100%; 
+    max-width: 40px; 
+    height: auto; 
+}
+
+.content-below-nav {
+    margin-top: 64px; 
+  }
+
+  body,
+  html {
+      margin: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+  }
+  
+  #navMobile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      height: 0; /* Altura inicial zero para a transição */
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      color: white;
+      overflow: hidden; /* Ocultar qualquer conteúdo que ultrapasse a altura inicial */
+      transition: height 0.5s ease; /* Adicionando uma transição para a altura */
+  }
+  
+  #navMobile.visible {
+      height: 100vh; /* Altura máxima quando a classe 'visible' é adicionada */
+  }
+  
+  #navMobile ul {
+      margin-top: 5%;
+      list-style: none;
+      padding: 0;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+  }
+  
+  #navMobile.visible ul {
+      opacity: 1; 
+  }
+  
+  #navMobile ul li {
+      margin: 10px 0;
+  }
+  
+  #navMobile ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+  }
+  
+  #closeButton {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+  }
