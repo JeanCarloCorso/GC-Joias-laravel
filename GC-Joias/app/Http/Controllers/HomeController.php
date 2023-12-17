@@ -12,12 +12,14 @@ class HomeController extends Controller
     public function Show()
     {
         $produtosComImagemPrincipal = Produtos::whereHas('imagens')->where('quantidade', '>', 0)
-            ->orderBy('nome', 'asc')->get();
+            ->orderBy('created_at', 'desc')->get();
         $qtdProdutosUnisex = $produtosComImagemPrincipal->where('genero_id', 3)->count();
         $qtdProdutosMasculinos = $produtosComImagemPrincipal->where('genero_id', 1)->count() + $qtdProdutosUnisex;
         $qtdProdutosFemininos = $produtosComImagemPrincipal->where('genero_id', 2)->count() + $qtdProdutosUnisex;
 
         $banners = Banners::all();
+
+        $produtosComImagemPrincipal = $produtosComImagemPrincipal->slice(0, 4);
 
         return view('home', 
             ['produtoscomImagens' => $produtosComImagemPrincipal, 'banners' => $banners, 
