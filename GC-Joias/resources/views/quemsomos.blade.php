@@ -3,7 +3,12 @@
 @section('title', ':: Quem Somos')
 
 @section('content')
-    <h2>Quem Somos?</h2>
+<link rel="stylesheet" href={{ asset('css/paginasExtras.css') }}>
+
+<div class="custon-bloco-start">
+        <h3>Quem Somos?</h3>
+        <hr class="custon">
+</div>
 
     <p>Bem-vindo à GC Joias, onde a magia e o encanto se encontram. Fundada pela apaixonada 
     Gabrielly de Almeida Corso, a GC Joias é mais do que uma loja de semi-joias; é um espaço onde a 
@@ -24,4 +29,12 @@
     <p>Junte-se a nós nesta jornada onde cada peça não é apenas um acessório, mas uma afirmação da sua 
     história, sua elegância e sua autenticidade.</p>
 
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+    
 @endsection
