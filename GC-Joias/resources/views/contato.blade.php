@@ -3,10 +3,14 @@
 @section('title', ':: Contato')
 
 @section('content')
-    <div class="row justify-content-center">
+<link rel="stylesheet" href={{ asset('css/contato.css') }}>
+    <div class="row justify-content-center custon-row">
         <form class="col-sm-10 col-md-8 col-lg-6" method="post" action="{{ route('salvaNovaMensagem') }}">
             @csrf
-            <h1>Entre em Contato</h1>
+            <div class="custon-bloco-start">
+                <h1 class="custon">Entre em Contato</h1>
+                <hr class="custon">
+            </div>
 
             <div class="form-floating mb-3">
                 <input type="text" name="nome" id="txtNomeCompleto" class="form-control" placeholder=" " autofocus>
@@ -24,7 +28,9 @@
                 <label for="txtMensagem">Mensagem</label>
             </div>
 
-            <button type="submit" class="btn btn-lg btn-custon">Enviar Mensagem</button>
+            <div class="col-12">
+                <button type="submit" class="btn btn-lg btn-custon w-100">Enviar Mensagem</button>
+            </div>
 
             <p class="mt-3">
                 Faremos nosso melhor para responder sua mensagem em até 2 dias úteis.
