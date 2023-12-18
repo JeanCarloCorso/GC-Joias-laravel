@@ -130,7 +130,11 @@
         </form>
     </div>
     
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.scrollTo(0, 0); // Isso faz a página rolar para o topo quando carregada
+        });
+    </script>
     
 @endsection
 

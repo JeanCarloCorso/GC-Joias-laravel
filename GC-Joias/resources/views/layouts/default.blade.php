@@ -36,7 +36,7 @@
                         <a href="/" class="nav-link text-white">Homens</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/" class="nav-link text-white">Sobre</a>
+                        <a href="{{ route('quemsomos.show') }}" class="nav-link text-white">Sobre</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('contato.show') }}" class="nav-link text-white">Contato</a>
@@ -73,8 +73,8 @@
             <li><a href="/">Início</a></li>
             <li><a href="/">Mulheres</a></li>
             <li><a href="/">Homens</a></li>
-            <li><a href="/">Sobre</a></li>
-            <li><a href="/">Contato</a></li>
+            <li><a href="{{ route('quemsomos.show') }}">Sobre</a></li>
+            <li><a href="{{ route('contato.show') }}">Contato</a></li>
         </ul>
     </div>
 
