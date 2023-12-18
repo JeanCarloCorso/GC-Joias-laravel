@@ -3,8 +3,11 @@
 @section('title', ':: Confirmação')
 
 @section('content')
-    <h1>Mensagem Recebida!</h1>
-    <hr>
+<link rel="stylesheet" href={{ asset('css/paginasExtras.css') }}>
+    <div class="custon-bloco-start">
+        <h1 class="custon">Entre em Contato</h1>
+        <hr class="custon">
+    </div>
     <p>
         Caro cliente,
     </p>
@@ -20,4 +23,12 @@
         Cordialmente,<br>
         Central de Relacionamento GC Jóias
     </p>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 @endsection
