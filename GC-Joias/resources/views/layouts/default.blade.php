@@ -30,10 +30,10 @@
                         <a href="/" class="nav-link text-white">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/" class="nav-link text-white">Mulheres</a>
+                        <a href="/categoria/mulher" class="nav-link text-white">Mulheres</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/" class="nav-link text-white">Homens</a>
+                        <a href="/categoria/homem" class="nav-link text-white">Homens</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('quemsomos.show') }}" class="nav-link text-white">Sobre</a>
@@ -71,8 +71,8 @@
         </button>
         <ul>
             <li><a href="/">Início</a></li>
-            <li><a href="/">Mulheres</a></li>
-            <li><a href="/">Homens</a></li>
+            <li><a href="/categoria/mulher">Mulheres</a></li>
+            <li><a href="/categoria/homem">Homens</a></li>
             <li><a href="{{ route('quemsomos.show') }}">Sobre</a></li>
             <li><a href="{{ route('contato.show') }}">Contato</a></li>
         </ul>

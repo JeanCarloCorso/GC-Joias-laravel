@@ -5,7 +5,7 @@
 @section('content')
     <link rel="stylesheet" href={{ asset('css\estilosPaginaDetalheProduto.css') }}>
      
-     <div class="row">
+    <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 imagens-block">
             <div class="row">
                 <div class="col-2">
@@ -53,6 +53,31 @@
             </div>
         </div>
     </div>
+    @if(count($produtosRelacionados) > 0)
+        <div class="row">
+            <div class="col-12">
+                <div class="text-block">
+                    <h3>Produtos Relacionados</h3>
+                    <hr class="custon">
+                </div>
+            </div>
+        </div>
+        <div class="row g-2">
+            @foreach($produtosRelacionados as $produto)
+                <div class="col-4 col-sm-3 col-lg-2">
+                    <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn mt-2 d-block">
+                        <div class="card text-center bg-light">
+                            <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="card-img-top">
+                        </div>
+                        <div>
+                            <span class="custom-span truncar-1l">{{ $produto->nome }}</span>
+                            <span class="custom-span span-preco">R$ {{ number_format($produto->preco, 2, ',', '.') }}</span>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    @endif
     </br>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
