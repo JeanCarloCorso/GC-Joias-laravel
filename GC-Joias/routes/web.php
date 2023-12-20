@@ -4,6 +4,7 @@ use App\Http\Controllers\AreaRestritaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MensagensController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProdutosHomensController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
@@ -47,14 +48,14 @@ Route::post('/login/mensagens', [MensagensController::class, 'OrdenarMensagens']
 
 
 Route::get('/', [HomeController::class, 'Show'])->name('home.show');
+Route::get('/categoria/homem', [ProdutosHomensController::class, 'Show'])->name('homens.show');
+//Route::get('/categoria/mulher', [ProdutosMulheresController::class, 'Show'])->name('mulheres.show');
 
 Route::prefix('filtro')->group(function() {
     Route::any('nome', [HomeController::class, 'FiltraPorNome'])->name('filtra.produto.nome');
 });
 Route::any('ordenado', [HomeController::class, 'OrdenarProduto'])->name('ordena.produto');
 Route::any('produto/{id}', [HomeController::class, 'DetalhesProduto'])->name('produto.detalhes');
-
-//Route::get('/filtro/nome', [HomeController::class, 'Show']);
 
 Route::get('/privacidade', function () {
     return view('privacidade');

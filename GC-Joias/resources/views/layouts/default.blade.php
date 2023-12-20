@@ -85,7 +85,7 @@
         @yield('content')
     </div>
   
-    <footer class="border-top" style="background-color: #171825; color: white;">
+    <footer class="border-top footer" style="background-color: #171825; color: white;">
         <div class="container">
             <div class="row py-3">
                 <div class="slide1 col-12 col-md-4 text-center">

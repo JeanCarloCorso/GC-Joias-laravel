@@ -84,7 +84,7 @@
             <hr class="custon">
             <div class="row g-3 justify-content-center custon-row">
             @foreach($produtoscomImagens as $produto)
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-6">
                     <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn mt-2 d-block">
                         <div class="card text-center bg-light">
                             <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="card-img-top">
