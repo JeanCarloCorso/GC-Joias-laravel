@@ -14,7 +14,7 @@
                     @csrf
                     <h4>Busca por Nome</h4>
                     <div class="input-group input-group-sm">
-                        <input name="nome" type="text" class="form-control" placeholder="Digite aqui o que procura">
+                    <input id="filtroNomeSmall" name="nome" type="text" class="form-control" placeholder="Filtrar por nome" autocomplete="off">
                         <button class="btn btnBuscar" onclick="closeFiltro()">Buscar</button>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                 <div>
                     @foreach($categorias as $categoria)
                         <input type="checkbox" id="{{ $categoria->id }}" 
-                            name="{{ $categoria->id }}" value="{{ $categoria->id }}">
+                            name="{{ $categoria->id }}" value="{{ $categoria->id }}" class="categoria-checkbox">
                         <label for="{{ $categoria->id }}"> {{ $categoria->descricao }} </label><br>
                     @endforeach
                 </div>
@@ -41,19 +41,19 @@
     <div class="row">
         <div class="col-12 col-md-3 d-none d-md-block mx-auto"><!--Filtros tela grande-->
             <div class="menuEsquerdo">
-                <form class="justify-content-center justify-content-md-start mb-3 mb-md-0" method="post" action="{{ route('filtra.produto.nome') }}">
+                <div class="justify-content-center justify-content-md-start mb-3 mb-md-0">
                     @csrf
                     <h4>Busca por Nome</h4>
                     <div class="input-group input-group-sm">
-                        <input name="nome" type="text" class="form-control" placeholder="Digite aqui o que procura">
+                        <input id="filtroNomeLarge" name="nome" type="text" class="form-control" placeholder="Filtrar por nome" autocomplete="off">
                     </div>
-                </form>
+                </div>
                 </br>
                 <h4>Categorias</h4>
                 <form>
                     @foreach($categorias as $categoria)
                         <input type="checkbox" id="{{ $categoria->id }}" 
-                            name="{{ $categoria->id }}" value="{{ $categoria->id }}">
+                            name="{{ $categoria->id }}" value="{{ $categoria->id }}" class="categoria-checkbox">
                         <label for="{{ $categoria->id }}"> {{ $categoria->descricao }} </label><br>
                     @endforeach
                 </form>
@@ -85,10 +85,10 @@
                 </div>
             </div>
             <div class="container-fluid pl-0 pr-0"> <!--produtos-->
-                <div class="row g-5 custon-row">
+                <div id="containerProdutos" class="row g-5 custon-row">
                     @if(count($produtoscomImagens) > 0)
                         @foreach($produtoscomImagens as $produto)
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-6">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-6 produto" data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}" data-categoria="{{ $produto->categoria_id }}">
                                 <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn mt-2 d-block">
                                     <div class="card text-center bg-light">
                                         <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="card-img-top">
@@ -113,5 +113,6 @@
         </div>
     </div>
     <script src={{ asset('js/filtroProdutos.js') }}></script>
+
 @endsection
 

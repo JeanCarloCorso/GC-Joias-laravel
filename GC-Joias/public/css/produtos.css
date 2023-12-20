@@ -73,7 +73,7 @@ h1.custon {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: #323653;
     width: 0; /* Largura inicial zero para a transição */
     height: 100vh;
     position: fixed;
