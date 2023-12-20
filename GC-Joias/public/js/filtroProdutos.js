@@ -12,19 +12,29 @@ function closeFiltro() {
     filtroMobile.classList.remove('visible'); 
 }
 
-
+//filtra por nome, categoria e preço
 document.addEventListener("DOMContentLoaded", function() {
     const inputFiltroNomeSmall = document.getElementById('filtroNomeSmall');
     const inputFiltroNomeLarge = document.getElementById('filtroNomeLarge');
+    const checkboxes = document.querySelectorAll('.categoria-checkbox');
     const produtos = document.querySelectorAll('.produto');
 
     const handleInput = function(input) {
         const filtroNome = input.value.toLowerCase().trim();
+        const minPrice = parseFloat(document.getElementById('minPrice').textContent);
+        const maxPrice = parseFloat(document.getElementById('maxPrice').textContent);
+        const categorias = categoriasSelecionadas();
 
         produtos.forEach(produto => {
             const nomeProduto = produto.getAttribute('data-nome').toLowerCase();
+            const categoriaProduto = produto.getAttribute('data-categoria');
+            const precoProduto = parseFloat(produto.getAttribute('data-preco'));
 
-            if (nomeProduto.includes(filtroNome)) {
+            const nomeFiltroPassou = nomeProduto.includes(filtroNome);
+            const categoriaFiltroPassou = categorias.length === 0 || categorias.includes(categoriaProduto);
+            const precoFiltroPassou = precoProduto >= minPrice && precoProduto <= maxPrice;
+
+            if (nomeFiltroPassou && categoriaFiltroPassou && precoFiltroPassou) {
                 produto.style.display = 'block';
             } else {
                 produto.style.display = 'none';
@@ -32,46 +42,29 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     };
 
-    inputFiltroNomeSmall.addEventListener('input', function() {
-        handleInput(inputFiltroNomeSmall);
-    });
+    const categoriasSelecionadas = () => {
+        const categorias = [];
+        checkboxes.forEach(cb => {
+            if (cb.checked) {
+                categorias.push(cb.getAttribute('id'));
+            }
+        });
+        return categorias;
+    };
 
-    inputFiltroNomeLarge.addEventListener('input', function() {
-        handleInput(inputFiltroNomeLarge);
-    });
-});
+    const inputChangeHandler = function() {
+        handleInput(this);
+    };
 
-document.addEventListener('DOMContentLoaded', function () {
-    const checkboxes = document.querySelectorAll('.categoria-checkbox');
+    inputFiltroNomeSmall.addEventListener('input', inputChangeHandler);
+    inputFiltroNomeLarge.addEventListener('input', inputChangeHandler);
 
-    checkboxes.forEach(function (checkbox) {
-        checkbox.addEventListener('change', function () {
-            const categoriasSelecionadas = [];
-
-            checkboxes.forEach(function (cb) {
-                if (cb.checked) {
-                    categoriasSelecionadas.push(cb.getAttribute('id'));
-                }
-            });
-
-            const produtos = document.querySelectorAll('.produto');
-
-            produtos.forEach(function (produto) {
-                const categoriaProduto = produto.getAttribute('data-categoria');
-
-                if (categoriasSelecionadas.length === 0 || categoriasSelecionadas.includes(categoriaProduto)) {
-                    produto.style.display = 'block'; 
-                } else {
-                    produto.style.display = 'none'; 
-                }
-            });
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            handleInput(inputFiltroNomeSmall);
+            handleInput(inputFiltroNomeLarge);
         });
     });
-});
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    const produtos = document.querySelectorAll('.produto');
 
     const createPriceSlider = function(sliderId, minPriceInputId, maxPriceInputId) {
         const minPriceInput = document.getElementById(minPriceInputId);
@@ -88,28 +81,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         const handlePriceFilter = function(values) {
-            const minPrice = parseFloat(values[0]);
-            const maxPrice = parseFloat(values[1]);
-
-            produtos.forEach(produto => {
-                const precoProduto = parseFloat(produto.getAttribute('data-preco'));
-
-                if (precoProduto >= minPrice && precoProduto <= maxPrice) {
-                    produto.style.display = 'block';
-                } else {
-                    produto.style.display = 'none';
-                }
-            });
+            minPriceInput.textContent = Math.round(values[0]);
+            maxPriceInput.textContent = Math.round(values[1]);
+            handleInput(inputFiltroNomeSmall);
+            handleInput(inputFiltroNomeLarge);
         };
 
         priceSlider.noUiSlider.on('update', function(values) {
-            minPriceInput.textContent = Math.round(values[0]);
-            maxPriceInput.textContent = Math.round(values[1]);
             handlePriceFilter(values);
         });
     };
 
-    // Chamar a função para criar o controle deslizante e filtro de preço para os dois sliders
     createPriceSlider('priceSlider', 'minPrice', 'maxPrice');
     createPriceSlider('priceSliderSmall', 'minPriceSmall', 'maxPriceSmall');
 });
