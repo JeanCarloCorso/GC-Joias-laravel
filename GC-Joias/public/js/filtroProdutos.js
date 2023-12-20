@@ -41,20 +41,13 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
-    // Selecione todos os checkboxes de categoria
     const checkboxes = document.querySelectorAll('.categoria-checkbox');
 
-    // Adicione um ouvinte de evento para cada checkbox
     checkboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
-            // Array para armazenar as categorias selecionadas
             const categoriasSelecionadas = [];
 
-            // Iterar por todas as checkboxes para verificar quais estão marcadas
             checkboxes.forEach(function (cb) {
                 if (cb.checked) {
                     categoriasSelecionadas.push(cb.getAttribute('id'));
@@ -64,15 +57,13 @@ document.addEventListener('DOMContentLoaded', function () {
             // Selecionar todos os produtos
             const produtos = document.querySelectorAll('.produto');
 
-            // Iterar por todos os produtos para mostrar/esconder com base nas categorias selecionadas
             produtos.forEach(function (produto) {
                 const categoriaProduto = produto.getAttribute('data-categoria');
 
-                // Verificar se a categoria do produto está nas categorias selecionadas
                 if (categoriasSelecionadas.length === 0 || categoriasSelecionadas.includes(categoriaProduto)) {
-                    produto.style.display = 'block'; // Exibir o produto
+                    produto.style.display = 'block'; 
                 } else {
-                    produto.style.display = 'none'; // Ocultar o produto
+                    produto.style.display = 'none'; 
                 }
             });
         });
@@ -80,3 +71,42 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    const minPriceInput = document.getElementById('minPrice');
+    const maxPriceInput = document.getElementById('maxPrice');
+    const produtos = document.querySelectorAll('.produto');
+
+    const priceSlider = document.getElementById('priceSlider');
+
+    noUiSlider.create(priceSlider, {
+        start: [0, 500],
+        connect: true,
+        range: {
+            'min': 0,
+            'max': 500
+        }
+    });
+
+    // Função para filtrar produtos com base no preço
+    const handlePriceFilter = function(values) {
+        const minPrice = parseFloat(values[0]);
+        const maxPrice = parseFloat(values[1]);
+
+        produtos.forEach(produto => {
+            const precoProduto = parseFloat(produto.getAttribute('data-preco'));
+
+            if (precoProduto >= minPrice && precoProduto <= maxPrice) {
+                produto.style.display = 'block';
+            } else {
+                produto.style.display = 'none';
+            }
+        });
+    };
+
+    // Atualize os valores mínimo e máximo conforme o controle deslizante é movido
+    priceSlider.noUiSlider.on('update', function(values) {
+        minPriceInput.textContent = Math.round(values[0]);
+        maxPriceInput.textContent = Math.round(values[1]);
+        handlePriceFilter(values);
+    });
+});

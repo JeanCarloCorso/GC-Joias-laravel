@@ -3,6 +3,8 @@
 @section('title', ':: ' . $genero)
 
 @section('foraContainer')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
     <div id="filtroMobile" class="hidden">
         <button id="closeButton" onclick="closeFiltro()">
             <svg class="bi me-2" width="40" height="40" style="fill: white;">
@@ -57,6 +59,13 @@
                         <label for="{{ $categoria->id }}"> {{ $categoria->descricao }} </label><br>
                     @endforeach
                 </form>
+                </br>
+                <h4>Faixa de Preço</h4>
+                <div id="priceSlider"></div>
+                <div>
+                    Valor Mínimo: <span id="minPrice">0</span><br>
+                    Valor Máximo: <span id="maxPrice">500</span>
+                </div>
             </div>
         </div>
         <div class="col-12 col-sm-8 col-md-9">
@@ -88,7 +97,7 @@
                 <div id="containerProdutos" class="row g-5 custon-row">
                     @if(count($produtoscomImagens) > 0)
                         @foreach($produtoscomImagens as $produto)
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-6 produto" data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}" data-categoria="{{ $produto->categoria_id }}">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-6 produto" data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}" data-categoria="{{ $produto->categoria_id }}" data-preco="{{ $produto->preco }}">
                                 <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn mt-2 d-block">
                                     <div class="card text-center bg-light">
                                         <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="card-img-top">
