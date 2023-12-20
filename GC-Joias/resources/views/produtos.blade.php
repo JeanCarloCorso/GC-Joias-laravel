@@ -29,6 +29,13 @@
                         <label for="{{ $categoria->id }}"> {{ $categoria->descricao }} </label><br>
                     @endforeach
                 </div>
+                </br>
+                <h4>Faixa de Preço</h4>
+                <div id="priceSliderSmall"></div>
+                <div>
+                    Valor Mínimo: <span id="minPriceSmall">0</span><br>
+                    Valor Máximo: <span id="maxPriceSmall">500</span>
+                </div>
             </div>
     </div>
 @endsection
@@ -66,6 +73,12 @@
                     Valor Mínimo: <span id="minPrice">0</span><br>
                     Valor Máximo: <span id="maxPrice">500</span>
                 </div>
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
             </div>
         </div>
         <div class="col-12 col-sm-8 col-md-9">
@@ -115,6 +128,9 @@
                 </div>
             </div>
             <div> <!--espaço fim de página-->
+                </br>
+                </br>
+                </br>
                 </br>
                 </br>
                 </br>

@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // Selecionar todos os produtos
             const produtos = document.querySelectorAll('.produto');
 
             produtos.forEach(function (produto) {
@@ -72,41 +71,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    const minPriceInput = document.getElementById('minPrice');
-    const maxPriceInput = document.getElementById('maxPrice');
     const produtos = document.querySelectorAll('.produto');
 
-    const priceSlider = document.getElementById('priceSlider');
+    const createPriceSlider = function(sliderId, minPriceInputId, maxPriceInputId) {
+        const minPriceInput = document.getElementById(minPriceInputId);
+        const maxPriceInput = document.getElementById(maxPriceInputId);
+        const priceSlider = document.getElementById(sliderId);
 
-    noUiSlider.create(priceSlider, {
-        start: [0, 500],
-        connect: true,
-        range: {
-            'min': 0,
-            'max': 500
-        }
-    });
-
-    // Função para filtrar produtos com base no preço
-    const handlePriceFilter = function(values) {
-        const minPrice = parseFloat(values[0]);
-        const maxPrice = parseFloat(values[1]);
-
-        produtos.forEach(produto => {
-            const precoProduto = parseFloat(produto.getAttribute('data-preco'));
-
-            if (precoProduto >= minPrice && precoProduto <= maxPrice) {
-                produto.style.display = 'block';
-            } else {
-                produto.style.display = 'none';
+        noUiSlider.create(priceSlider, {
+            start: [0, 500],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 500
             }
+        });
+
+        const handlePriceFilter = function(values) {
+            const minPrice = parseFloat(values[0]);
+            const maxPrice = parseFloat(values[1]);
+
+            produtos.forEach(produto => {
+                const precoProduto = parseFloat(produto.getAttribute('data-preco'));
+
+                if (precoProduto >= minPrice && precoProduto <= maxPrice) {
+                    produto.style.display = 'block';
+                } else {
+                    produto.style.display = 'none';
+                }
+            });
+        };
+
+        priceSlider.noUiSlider.on('update', function(values) {
+            minPriceInput.textContent = Math.round(values[0]);
+            maxPriceInput.textContent = Math.round(values[1]);
+            handlePriceFilter(values);
         });
     };
 
-    // Atualize os valores mínimo e máximo conforme o controle deslizante é movido
-    priceSlider.noUiSlider.on('update', function(values) {
-        minPriceInput.textContent = Math.round(values[0]);
-        maxPriceInput.textContent = Math.round(values[1]);
-        handlePriceFilter(values);
-    });
+    // Chamar a função para criar o controle deslizante e filtro de preço para os dois sliders
+    createPriceSlider('priceSlider', 'minPrice', 'maxPrice');
+    createPriceSlider('priceSliderSmall', 'minPriceSmall', 'maxPriceSmall');
 });
