@@ -4,11 +4,15 @@
 
 @section('content')
 
-<link rel="stylesheet" href={{ asset('css/estilos.css') }}>
+<link rel="stylesheet" href={{ asset('css/login.css') }}>
 
-    <form class="col-sm-10 col-md-8 col-lg-6" method="post" action="{{ route('login.store') }}">
-        @csrf
+<div class="custon-bloco-start">
         <h1>Identifique-se, por favor</h1>
+        <hr class="custon">
+</div>
+
+    <form class="col-sm-10 col-md-8 col-lg-6 mx-auto" method="post" action="{{ route('login.store') }}">
+        @csrf
 
         <div class="form-floating mb-3">
             <input type="email" id="txtEmail" class="form-control" name="email" placeholder=" " autofocus>
@@ -24,7 +28,7 @@
             <label for="chkLembrar" class="form-check-label">Lembrar de mim</label>
         </div>
 
-        <button type="submit" class="btn btn-lg btn-custon">Entrar</button>
+        <button type="submit" class="btn">Entrar</button>
 
         <p class="mt-3">
             Se tiver problemas ao efetuar login, entre em contato com o administrador do sistema!
@@ -45,6 +49,10 @@
             @endif
         </div>
 
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <br/>
     </form>
 @endsection
