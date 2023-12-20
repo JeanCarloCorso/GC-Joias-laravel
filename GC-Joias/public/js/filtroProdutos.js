@@ -12,14 +12,15 @@ function closeFiltro() {
     filtroMobile.classList.remove('visible'); 
 }
 
-//filtra por nome, categoria e preço
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const inputFiltroNomeSmall = document.getElementById('filtroNomeSmall');
     const inputFiltroNomeLarge = document.getElementById('filtroNomeLarge');
     const checkboxes = document.querySelectorAll('.categoria-checkbox');
     const produtos = document.querySelectorAll('.produto');
+    const selectElement = document.querySelector('select[name="ordenacao"]');
+    const container = document.getElementById('containerProdutos');
 
-    const handleInput = function(input) {
+    const handleInput = function (input) {
         const filtroNome = input.value.toLowerCase().trim();
         const minPrice = parseFloat(document.getElementById('minPrice').textContent);
         const maxPrice = parseFloat(document.getElementById('maxPrice').textContent);
@@ -52,21 +53,21 @@ document.addEventListener("DOMContentLoaded", function() {
         return categorias;
     };
 
-    const inputChangeHandler = function() {
+    const inputChangeHandler = function () {
         handleInput(this);
     };
 
     inputFiltroNomeSmall.addEventListener('input', inputChangeHandler);
     inputFiltroNomeLarge.addEventListener('input', inputChangeHandler);
 
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
             handleInput(inputFiltroNomeSmall);
             handleInput(inputFiltroNomeLarge);
         });
     });
 
-    const createPriceSlider = function(sliderId, minPriceInputId, maxPriceInputId) {
+    const createPriceSlider = function (sliderId, minPriceInputId, maxPriceInputId) {
         const minPriceInput = document.getElementById(minPriceInputId);
         const maxPriceInput = document.getElementById(maxPriceInputId);
         const priceSlider = document.getElementById(sliderId);
@@ -80,18 +81,61 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        const handlePriceFilter = function(values) {
+        const handlePriceFilter = function (values) {
             minPriceInput.textContent = Math.round(values[0]);
             maxPriceInput.textContent = Math.round(values[1]);
             handleInput(inputFiltroNomeSmall);
             handleInput(inputFiltroNomeLarge);
         };
 
-        priceSlider.noUiSlider.on('update', function(values) {
+        priceSlider.noUiSlider.on('update', function (values) {
             handlePriceFilter(values);
         });
     };
 
     createPriceSlider('priceSlider', 'minPrice', 'maxPrice');
     createPriceSlider('priceSliderSmall', 'minPriceSmall', 'maxPriceSmall');
+
+    const updateProductsOrder = function () {
+        const selectedValue = parseInt(selectElement.value);
+        const produtosArray = Array.from(container.querySelectorAll('.produto'));
+
+        switch (selectedValue) {
+            case 0:
+                produtosArray.sort((a, b) => {
+                    return a.dataset.nome.localeCompare(b.dataset.nome);
+                });
+                break;
+            case 1:
+                produtosArray.sort((a, b) => {
+                    return parseFloat(a.dataset.preco) - parseFloat(b.dataset.preco);
+                });
+                break;
+            case 2:
+                produtosArray.sort((a, b) => {
+                    return parseFloat(b.dataset.preco) - parseFloat(a.dataset.preco);
+                });
+                break;
+            case 3:
+                produtosArray.sort((a, b) => {
+                    return new Date(b.dataset.data.replace(' ', 'T')) - new Date(a.dataset.data.replace(' ', 'T'));
+                });
+                break;
+            case 4:
+                produtosArray.sort((a, b) => {
+                    return new Date(a.dataset.data.replace(' ', 'T')) - new Date(b.dataset.data.replace(' ', 'T'));
+                });
+                break;
+            default:
+                break;
+        }
+
+        // Reorganiza os cards de produtos no DOM
+        container.innerHTML = '';
+        produtosArray.forEach(function (produto) {
+            container.appendChild(produto);
+        });
+    };
+
+    selectElement.addEventListener('change', updateProductsOrder);
 });

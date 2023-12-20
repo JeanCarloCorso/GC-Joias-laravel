@@ -91,9 +91,9 @@
                     </div>
                     <div class="col-6 col-md-12">
                         <div class="d-flex flex-row-reverse">
-                            <form class="d-inline-block" id="formOrdenacao" method="post" action="{{ route('ordena.produto') }}">
+                            <div class="d-inline-block" id="formOrdenacao">
                                 @csrf 
-                                <select class="form-select form-select-sm" name="ordenacao" onchange="submitForm()"> <!-- Adicione onchange para chamar a função JS -->
+                                <select class="form-select form-select-sm" name="ordenacao" onchange="submitForm()">
                                     <option disabled selected hidden>Ordenar</option>
                                     <option value="0">Ordenar pelo nome</option>
                                     <option value="1">Ordenar pelo menor preço</option>
@@ -101,7 +101,7 @@
                                     <option value="3">Ordenar pelo mais recente</option>
                                     <option value="4">Ordenar pelo mais antigo</option>
                                 </select>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                 <div id="containerProdutos" class="row g-5 custon-row">
                     @if(count($produtoscomImagens) > 0)
                         @foreach($produtoscomImagens as $produto)
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-6 produto" data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}" data-categoria="{{ $produto->categoria_id }}" data-preco="{{ $produto->preco }}">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-6 produto" data-id="{{ $produto->id }}" data-nome="{{ $produto->nome }}" data-categoria="{{ $produto->categoria_id }}" data-preco="{{ $produto->preco }}" data-data="{{ $produto->created_at }}">
                                 <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn mt-2 d-block">
                                     <div class="card text-center bg-light">
                                         <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="card-img-top">
