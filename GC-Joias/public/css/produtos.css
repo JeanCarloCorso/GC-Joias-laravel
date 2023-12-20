@@ -27,6 +27,18 @@ h1.custon {
     transform: scale(1.05); /* Efeito de escala no hover */
 }
 
+.btnFiltro {
+    background-color: #323653;
+    color: white;
+    border-radius: 7px; 
+    display: inline-block;
+    transition: transform 0.3s ease-in-out; /* Adiciona transição suave */
+}
+
+.btnFiltro:hover {
+    transform: scale(1.05); /* Efeito de escala no hover */
+}
+
 .card {
     border-radius: 10px; /* Cantos arredondados para o card */
 }
@@ -50,4 +62,51 @@ h1.custon {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.menuEsquerdo {
+    margin-left: 5%;
+}
+
+
+#filtroMobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 0; /* Largura inicial zero para a transição */
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100%; /* Posição inicial fora da tela à esquerda */
+    z-index: 9999;
+    color: white;
+    overflow: hidden; /* Ocultar qualquer conteúdo que ultrapasse a largura inicial */
+    transition: width 0.5s ease, left 0.5s ease; /* Adicionando transições para largura e posição */
+}
+
+#filtroMobile.visible {
+    width: 100%; /* Largura máxima quando a classe 'visible' é adicionada */
+    left: 0; /* Posição para aparecer totalmente na tela */
+}
+
+#filtroMobile:not(.visible) {
+    left: -100%; /* Posição para sair totalmente da tela à esquerda quando a classe 'visible' é removida */
+}
+
+#closeButton {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btnBuscar {
+    background-color: white;
+    color: #323653;
+    border-radius: 7px; 
 }

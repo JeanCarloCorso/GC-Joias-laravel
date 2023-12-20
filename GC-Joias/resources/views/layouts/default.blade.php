@@ -78,6 +78,10 @@
         </ul>
     </div>
 
+    <div>
+        @yield('foraContainer')
+    </div>
+
     <div class="content-below-nav">
         @yield('carrousel')
     </div>

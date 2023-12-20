@@ -83,18 +83,18 @@
             <h3>PRODUTOS EM DESTAQUE</h3>
             <hr class="custon">
             <div class="row g-3 justify-content-center custon-row">
-            @foreach($produtoscomImagens as $produto)
-                <div class="col-xl-3 col-lg-3 col-md-4 col-6">
-                    <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn mt-2 d-block">
-                        <div class="card text-center bg-light">
-                            <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="card-img-top">
-                        </div>
-                        <div>
-                            <span class="custom-span truncar-1l">{{ $produto->nome }}</span>
-                            <span class="custom-span span-preco">R$ {{ number_format($produto->preco, 2, ',', '.') }}</span>
-                        </div>
-                    </a>
-                </div>
+                @foreach($produtoscomImagens as $produto)
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-6">
+                        <a href="{{ route('produto.detalhes', ['id' => $produto->id]) }}" class="btn mt-2 d-block">
+                            <div class="card text-center bg-light">
+                                <img src="{{ asset('storage/' . $produto->imagens[0]->path) }}" class="card-img-top">
+                            </div>
+                            <div>
+                                <span class="custom-span truncar-1l">{{ $produto->nome }}</span>
+                                <span class="custom-span span-preco">R$ {{ number_format($produto->preco, 2, ',', '.') }}</span>
+                            </div>
+                        </a>
+                    </div>
                 @endforeach
             </div>
         </div>

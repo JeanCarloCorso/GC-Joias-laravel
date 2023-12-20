@@ -12,7 +12,7 @@ class ProdutosHomensController extends Controller
         $produtosComImagemPrincipal = Produtos::whereHas('imagens')
             ->where('quantidade', '>', 0)
             ->where(function ($query) {
-                $query->where('genero_id', 1)
+                $query->where('genero_id', 2)
                     ->orWhere('genero_id', 3);
             })
             ->orderBy('created_at', 'desc')
