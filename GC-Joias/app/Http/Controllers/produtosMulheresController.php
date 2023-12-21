@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categorias;
 use App\Models\Produtos;
 
-class produtosMulheresController extends Controller
+class ProdutosMulheresController extends Controller
 {
     public function Show()
     {

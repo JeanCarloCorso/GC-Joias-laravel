@@ -34,7 +34,7 @@ class MensagensController extends Controller
     {
         if(Auth()->check())
         {
-            $mensagens = Mensagens::orderBy('created_at')->get();
+            $mensagens = Mensagens::orderBy('created_at', 'desc')->get();
 
             return view('areaRestrita/ar_centralMensagens', ['mensagens' => $mensagens]);
         }

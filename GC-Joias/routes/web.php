@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\AreaRestritaController;
-use App\Http\Controllers\detalhesProdutoController;
+use App\Http\Controllers\DetalhesProdutoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MensagensController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdutosHomensController;
 use App\Http\Controllers\produtosMulheresController;
-use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
