@@ -18,7 +18,10 @@
 }
 
 .content-below-nav {
-    margin-top: 64px; 
+    margin-top: 65px; 
+  }
+.content-below-nav-ar {
+    margin-top: 75px; 
   }
 
   body,

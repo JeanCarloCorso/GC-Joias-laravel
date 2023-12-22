@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href={{ asset('site/bootstrap.min.css') }}> 
+    <link rel="stylesheet" href={{ asset('css/newlayout.css') }}>
 
     <title>GC Jóias @yield('title', '')</title>
 
@@ -16,23 +17,25 @@
 </head>
 
 <body style="min-width: 372px;">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger border-bottom shadow-sm mb-3">
+    <nav class="navbar navbar-expand-lg navbar-dark border-bottom custom-nav shadow-sm mb-3">
         <div class="container">
-            <a class="navbar-brand" href="/"><b>GC Jóias</b></a>
-                <div class="align-self-end">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-white">Bem-vindo,&nbsp;@yield('nomeUser', 'Usuário')</a>
-                        </li>
-                        
-                    </ul>
-                </div>
+            <a class="navbar-brand custom-navbar-brand" href="/">
+                <img src="/site/img/logo/logo.png" alt="Logo" class="logo-image">
+                <b>GC Jóias</b>
+            </a>
+            <div class="align-self-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white">Bem-vindo,&nbsp;@yield('nomeUser', 'Usuário')</a>
+                    </li>
+                    
+                </ul>
             </div>
         </div>
     </nav>
 
     <main class="flex-fill">
-        <div class="container-fluid">
+        <div class="container-fluid content-below-nav-ar">
             <h3>Área Restrita</h3>
             <div class="row gx-3">
                 <div class="col-4">
