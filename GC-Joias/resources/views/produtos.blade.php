@@ -44,7 +44,6 @@
 
     <div class="custon-bloco-start">
             <h3>{{ $genero }}</h3>
-            <hr class="custon">
     </div>
 
     <div class="row">

@@ -7,7 +7,6 @@
 
 <div class="custon-bloco-start">
         <h3>Política Privacidade</h3>
-        <hr class="custon">
 </div>
         
                 <p><span style="color: rgb(68, 68, 68);">A sua privacidade é importante para nós. É política do GC Jóias
@@ -53,7 +52,6 @@
                         </span></p>
                         <div class="custon-bloco">
                                 <h3>Compromisso do Usuário</h3>
-                                <hr class="custon">
                         </div>
                 <p><span style="color: rgb(68, 68, 68);">O usuário se compromete a fazer uso adequado dos conteúdos e da
                         informação que o GC Jóias oferece no site e com caráter enunciativo, mas não limitativo:</span></p>
@@ -71,7 +69,6 @@
                 </ul>
                 <div class="custon-bloco">
                                 <h3>Mais informações</h3>
-                                <hr class="custon">
                         </div>
                 <p><span style="color: rgb(68, 68, 68);">Esperemos que esteja esclarecido e, como mencionado anteriormente,
                         se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os

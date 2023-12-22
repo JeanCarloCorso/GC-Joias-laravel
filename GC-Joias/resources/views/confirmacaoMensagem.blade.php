@@ -6,7 +6,6 @@
 <link rel="stylesheet" href={{ asset('css/paginasExtras.css') }}>
     <div class="custon-bloco-start">
         <h1 class="custon">Entre em Contato</h1>
-        <hr class="custon">
     </div>
     <p>
         Caro cliente,

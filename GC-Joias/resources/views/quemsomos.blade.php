@@ -7,7 +7,6 @@
 
 <div class="custon-bloco-start">
         <h3>Quem Somos?</h3>
-        <hr class="custon">
 </div>
 
     <p>Bem-vindo à GC Joias, onde a magia e o encanto se encontram. Fundada pela apaixonada 

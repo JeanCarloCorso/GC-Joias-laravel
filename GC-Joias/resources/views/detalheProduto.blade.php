@@ -58,7 +58,6 @@
             <div class="col-12">
                 <div class="text-block">
                     <h3>Produtos Relacionados</h3>
-                    <hr class="custon">
                 </div>
             </div>
         </div>

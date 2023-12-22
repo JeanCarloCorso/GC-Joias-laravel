@@ -1,0 +1,24 @@
+#menuRetratil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #323653;
+    width: 0; /* Largura inicial zero para a transição */
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100%; /* Posição inicial fora da tela à esquerda */
+    z-index: 9999;
+    color: white;
+    overflow: hidden; /* Ocultar qualquer conteúdo que ultrapasse a largura inicial */
+    transition: width 0.5s ease, left 0.5s ease; /* Adicionando transições para largura e posição */
+}
+
+#menuRetratil.visible {
+    width: 100%; /* Largura máxima quando a classe 'visible' é adicionada */
+    left: 0; /* Posição para aparecer totalmente na tela */
+}
+
+#menuRetratil:not(.visible) {
+    left: -100%; /* Posição para sair totalmente da tela à esquerda quando a classe 'visible' é removida */
+}

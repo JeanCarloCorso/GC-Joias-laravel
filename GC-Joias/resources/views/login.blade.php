@@ -8,7 +8,6 @@
 
 <div class="custon-bloco-start">
         <h1>Identifique-se, por favor</h1>
-        <hr class="custon">
 </div>
 
     <form class="col-sm-10 col-md-8 col-lg-6 mx-auto" method="post" action="{{ route('login.store') }}">

@@ -52,7 +52,6 @@
     <!--Exibe as categorias-->
     <div class="custon-bloco">
         <h3>CATEGORIAS</h3>
-        <hr class="custon">
         <div class="row g-4 justify-content-center custon-row">
             <div class="col-12 col-md-4">
                 <a href="/categoria/mulher" class="categoria-link">
@@ -81,7 +80,6 @@
     @if(count($produtoscomImagens) > 0)
         <div class="custon-bloco">
             <h3>PRODUTOS EM DESTAQUE</h3>
-            <hr class="custon">
             <div class="row g-3 justify-content-center custon-row">
                 @foreach($produtoscomImagens as $produto)
                     <div class="col-xl-3 col-lg-3 col-md-4 col-6">
@@ -104,8 +102,7 @@
         <form class="col-sm-10 col-md-8 col-lg-6" method="post" action="{{ route('salvaNovaMensagem') }}">
             @csrf
             <div class="custon-bloco">
-                <h3>CONTATO</h3>
-                <hr class="custon"><br>
+                <h3>CONTATO</h3><br>
             </div>
 
             <div class="form-floating mb-3">
@@ -130,11 +127,6 @@
         </form>
     </div>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            window.scrollTo(0, 0); // Isso faz a página rolar para o topo quando carregada
-        });
-    </script>
-    
+    <script src={{ asset('js/home.js') }}></script> 
 @endsection
 

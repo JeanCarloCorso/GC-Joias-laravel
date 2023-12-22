@@ -9,7 +9,6 @@
             @csrf
             <div class="custon-bloco-start">
                 <h1 class="custon">Entre em Contato</h1>
-                <hr class="custon">
             </div>
 
             <div class="form-floating mb-3">

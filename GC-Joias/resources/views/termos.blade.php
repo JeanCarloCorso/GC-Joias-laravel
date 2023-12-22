@@ -8,7 +8,6 @@
 
 <div class="custon-bloco-start">
         <h3>1. Termos</h3>
-        <hr class="custon">
 </div>
     <p><span style="color: rgb(68, 68, 68);">Ao acessar ao site <a href="https://www.gcjoias.com">GC Jóias</a>,
             concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis ​​e concorda
@@ -17,7 +16,6 @@
             são protegidos pelas leis de direitos autorais e marcas comerciais aplicáveis.</span></p>
             <div class="custon-bloco">
                 <h3>2. Uso de Licença</h3>
-                <hr class="custon">
         </div>
     <p><span style="color: rgb(68, 68, 68);">É concedida permissão para baixar temporariamente uma cópia dos
             materiais (informações ou software) no site GC Jóias , apenas para visualização transitória pessoal
@@ -40,7 +38,6 @@
             baixados em sua posse, seja em formato eletrónico ou impresso.</span></p>
             <div class="custon-bloco">
         <h3>3. Isenção de responsabilidade</h3>
-        <hr class="custon">
 </div>
     <ol>
         <li class="formatar"><span style="color: rgb(68, 68, 68);">Os materiais no site da GC Jóias são fornecidos 'como estão'.
@@ -55,7 +52,6 @@
     </ol>
     <div class="custon-bloco">
         <h3>4. Limitações</h3>
-        <hr class="custon">
 </div>
     <p><span style="color: rgb(68, 68, 68);">Em nenhum caso o GC Jóias ou seus fornecedores serão responsáveis
             ​​por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro ou devido a
@@ -66,7 +62,6 @@
             limitações podem não se aplicar a você.</span></p>
             <div class="custon-bloco">
         <h3>5. Precisão dos materiais</h3>
-        <hr class="custon">
 </div>
     <p><span style="color: rgb(68, 68, 68);">Os materiais exibidos no site da GC Jóias podem incluir erros
             técnicos, tipográficos ou fotográficos. GC Jóias não garante que qualquer material em seu site seja
@@ -75,7 +70,6 @@
             materiais.</span></p>
             <div class="custon-bloco">
         <h3>6. Links</h3>
-        <hr class="custon">
 </div>
     <p><span style="color: rgb(68, 68, 68);">O GC Jóias não analisou todos os sites vinculados ao seu site e não
             é responsável pelo conteúdo de nenhum site vinculado. A inclusão de qualquer link não implica
@@ -84,14 +78,12 @@
     <p><br></p>
     <div class="custon-bloco">
         <h3>Modificações</h3>
-        <hr class="custon">
 </div>
     <p><span style="color: rgb(68, 68, 68);">O GC Jóias pode revisar estes termos de serviço do site a qualquer
             momento, sem aviso prévio. Ao usar este site, você concorda em ficar vinculado à versão atual desses
             termos de serviço.</span></p>
             <div class="custon-bloco">
         <h3>Lei aplicável</h3>
-        <hr class="custon">
 </div>
     <p><span style="color: rgb(68, 68, 68);">Estes termos e condições são regidos e interpretados de acordo com
             as leis do GC Jóias e você se submete irrevogavelmente à jurisdição exclusiva dos tribunais naquele
