@@ -1,0 +1,26 @@
+body .error-container{
+    text-align: center;
+    color: white;
+    background-image: url('/site/img/error/pgErro.jpg'); 
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.error-content {
+    background-color: rgba(50, 54, 120, 0.7);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Se necessário, ajuste estilos para o footer */
+.footer {
+    background-color: #171825;
+    color: white;
+    padding: 20px;
+}

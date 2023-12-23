@@ -110,10 +110,10 @@
                     <a href="{{ route('contato.show') }}" class="text-decoration-none text-white">
                         Contato pelo Site
                     </a><br>
-                    E-mail: <a href="{{ config('app.email') }}" class="text-decoration-none text-white">
+                    E-mail: <a href="mailto:{{ config('app.email') }}" class="text-decoration-none text-white">
                         {{ config('app.email') }}
                     </a><br>
-                    Telefone: <a href="phone:{{ config('app.telefone') }}" class="text-decoration-none text-white">
+                    Telefone: <a href="tel:{{ config('app.telefone') }}" class="text-decoration-none text-white">
                         {{ config('app.telefone') }}
                     </a>
                 </div>
